@@ -79,8 +79,8 @@ import { requireAuth, signOut } from "../auth.js";
       label.textContent = "جاري الحفظ والتهيئة...";
 
       try {
-        // 1. Update Auth Email (using the login username format) and Password
-        const targetEmail = username + AUTH_DOMAIN_SUFFIX;
+        // 1. Update Auth Email (using the user's real email) and Password
+        const targetEmail = email;
 
         const { error: authError } = await supabase.auth.updateUser({
           email: targetEmail,
