@@ -1,0 +1,144 @@
+[
+  {
+    "_firestoreId": "U1NHQIGY5eI84RtvHQzc",
+    "title": "hhhhh",
+    "kind": "property",
+    "category": "residential",
+    "status": "available",
+    "area": 0,
+    "price": 0,
+    "currency": "OMR",
+    "images": [],
+    "description": "hhhhhhh",
+    "createdBy": "7VxRTGb34UNwclO70PweWQtc3UW2",
+    "createdAt": 1782355351663
+  },
+  {
+    "_firestoreId": "kP1In3LSmNmLFi78w0C1",
+    "description": "ارض تجارية مميزة في شارع الرباط",
+    "boundary": {
+      "type": "polygon",
+      "points": [
+        {
+          "lat": 17.034340983944134,
+          "lng": 54.156480200474604
+        },
+        {
+          "lng": 54.15653225960376,
+          "lat": 17.03587631115193
+        },
+        {
+          "lng": 54.157752731017816,
+          "lat": 17.035839301538292
+        },
+        {
+          "lat": 17.035792708427433,
+          "lng": 54.15779811678158
+        },
+        {
+          "lat": 17.034302553181075,
+          "lng": 54.157747617037785
+        },
+        {
+          "lat": 17.034340983944134,
+          "lng": 54.156480200474604
+        }
+      ]
+    },
+    "currency": "OMR",
+    "kind": "property",
+    "areaUnit": "m2",
+    "tags": {
+      "en": [],
+      "ar": []
+    },
+    "createdAt": 1780734964557,
+    "title": "ارض في السعادة",
+    "bedrooms": 0,
+    "locationUrl": "https://maps.app.goo.gl/H8pJz3vzx3agRqr4A",
+    "featured": true,
+    "area": 22937,
+    "type": "land",
+    "bathrooms": 0,
+    "category": "commercial",
+    "createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "updatedAt": 1782311672904,
+    "coordinates": {
+      "lng": 54.15713185423169,
+      "lat": 17.0350821403645
+    },
+    "images": [
+      "https://res.cloudinary.com/dbyl89hl1/image/upload/v1780734942/virea/properties/vfmz1f5lzcuvvlyplegu.jpg"
+    ],
+    "areaSize": 22937,
+    "price": 0,
+    "location": {
+      "en": "عمان, صلالة",
+      "ar": "عمان, صلالة"
+    },
+    "status": "available"
+  },
+  {
+    "_firestoreId": "p5qgUANsDjz6aff56Spc",
+    "description": {
+      "ar": "أرض تجارية مميزة في السعادة، صلالة، مناسبة للاستثمار والتطوير.",
+      "en": "Prime commercial land in Saada, Salalah, ideal for investment and development."
+    },
+    "currency": "OMR",
+    "areaUnit": "m2",
+    "tags": {
+      "ar": [],
+      "en": []
+    },
+    "title": {
+      "ar": "أرض تجارية في السعادة",
+      "en": "Commercial Land In Al-Saada"
+    },
+    "createdAt": 1779728035846,
+    "featured": true,
+    "mapUrl": "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d4281.624814501364!2d54.15829807515708!3d17.03743798379124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDAyJzE0LjgiTiA1NMKwMDknMzkuMSJF!5e1!3m2!1sen!2som!4v1779730292665!5m2!1sen!2som",
+    "type": "land",
+    "category": "commercial",
+    "areaSize": 750,
+    "images": [
+      "https://res.cloudinary.com/dbyl89hl1/image/upload/v1779730185/virea/properties/gyoxi6armrxzve2uurlz.jpg"
+    ],
+    "updatedAt": 1780732937105,
+    "price": 0,
+    "status": "available",
+    "location": {
+      "en": "Salalah, Al-Saada",
+      "ar": "صلالة، السعادة"
+    }
+  },
+  {
+    "_firestoreId": "yvBzaQQjT231Sjn8ZVI1",
+    "areaUnit": "m2",
+    "currency": "OMR",
+    "description": {
+      "ar": "11",
+      "en": "11"
+    },
+    "featured": true,
+    "createdAt": 1780503908584,
+    "title": {
+      "ar": "ارض",
+      "en": "Commercial Land In Al-Saada"
+    },
+    "tags": {
+      "ar": [],
+      "en": []
+    },
+    "createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "category": "residential",
+    "type": "land",
+    "status": "available",
+    "location": {
+      "en": "Salalah, Al-Saada",
+      "ar": "صلالة"
+    },
+    "price": 0,
+    "areaSize": 2000,
+    "images": []
+  }
+]

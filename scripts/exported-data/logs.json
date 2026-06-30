@@ -1,0 +1,172 @@
+[
+  {
+    "_firestoreId": "4wjPAJe89IhsQtMZo806",
+    "targetType": "user",
+    "userId": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "targetId": "oaHkHJSMjqaCZm3vsiRuSprmCr02",
+    "action": "created",
+    "meta": {
+      "role": "manager",
+      "username": "alaa"
+    },
+    "timestamp": 1780600099048
+  },
+  {
+    "_firestoreId": "5PJW6TBqrKX4FfOuUz0J",
+    "timestamp": 1782311673615,
+    "userId": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "targetId": "kP1In3LSmNmLFi78w0C1",
+    "action": "updated",
+    "meta": {
+      "title": "ارض في السعادة"
+    },
+    "targetType": "property"
+  },
+  {
+    "_firestoreId": "I3Dzg4PrixkhQgJaNBlb",
+    "action": "created",
+    "targetType": "property",
+    "targetId": "U1NHQIGY5eI84RtvHQzc",
+    "userId": "7VxRTGb34UNwclO70PweWQtc3UW2",
+    "meta": {
+      "title": "hhhhh"
+    },
+    "timestamp": 1782355352193
+  },
+  {
+    "_firestoreId": "LLUibrrd3Wgwv3AiAkl6",
+    "timestamp": 1780428452953,
+    "targetId": "XcsleBfEDGSnylrHSr1rHCa2C1F3",
+    "userId": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "meta": {
+      "role": "manager",
+      "username": "ali43422"
+    },
+    "action": "created",
+    "targetType": "user"
+  },
+  {
+    "_firestoreId": "LRQaieznbkoclXKx86So",
+    "targetType": "user",
+    "meta": {
+      "name": "عبدالله الحاتمي"
+    },
+    "action": "updated",
+    "targetId": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "userId": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "timestamp": 1780850349944
+  },
+  {
+    "_firestoreId": "NFRsLCiGHNhASZS1r68d",
+    "timestamp": 1780428581022,
+    "userId": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "targetId": "hGYBDVZnPYzfrA9qeQiX",
+    "action": "created",
+    "meta": {
+      "title": "خطاب 1"
+    },
+    "targetType": "attachment"
+  },
+  {
+    "_firestoreId": "c4tIatWx4pngbDneeHtn",
+    "targetType": "property",
+    "timestamp": 1782311383105,
+    "targetId": "kP1In3LSmNmLFi78w0C1",
+    "userId": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "meta": {
+      "title": "ارض في السعادة"
+    },
+    "action": "updated"
+  },
+  {
+    "_firestoreId": "deFqEEzqk166qmipAQMI",
+    "userId": "oaHkHJSMjqaCZm3vsiRuSprmCr02",
+    "targetId": "p5qgUANsDjz6aff56Spc",
+    "action": "updated",
+    "meta": {
+      "title": "Commercial Land In Al-Saada"
+    },
+    "timestamp": 1780732937727,
+    "targetType": "property"
+  },
+  {
+    "_firestoreId": "fG5858RdgbMBT1jyBEjN",
+    "timestamp": 1782310740149,
+    "userId": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "targetId": "kP1In3LSmNmLFi78w0C1",
+    "action": "updated",
+    "meta": {
+      "title": "ارض في السعادة"
+    },
+    "targetType": "property"
+  },
+  {
+    "_firestoreId": "hB4d3dIhp1RUnxRvvJ66",
+    "action": "created",
+    "meta": {
+      "title": "Commercial Land In Al-Saada"
+    },
+    "userId": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "targetId": "yvBzaQQjT231Sjn8ZVI1",
+    "timestamp": 1780503909773,
+    "targetType": "property"
+  },
+  {
+    "_firestoreId": "kSkkpFAXJOOdkTm5oAir",
+    "meta": {
+      "username": "faisal",
+      "role": "manager"
+    },
+    "action": "created",
+    "targetId": "AHbVQMNdGvSJwmGG95qRdu9ggO12",
+    "userId": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "timestamp": 1780841633101,
+    "targetType": "user"
+  },
+  {
+    "_firestoreId": "lUmZRpd3UtFxgMbhleHt",
+    "timestamp": 1780841528666,
+    "userId": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "targetId": "HIO9hwwAKQhYUCs9ZDkq1pMGZTI2",
+    "action": "created",
+    "meta": {
+      "username": "alik",
+      "role": "manager"
+    },
+    "targetType": "user"
+  },
+  {
+    "_firestoreId": "oiIJNP6Q4TCEcloOiaXt",
+    "timestamp": 1780841668109,
+    "action": "created",
+    "meta": {
+      "username": "alih",
+      "role": "manager"
+    },
+    "userId": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "targetId": "UzwGk0jtz2Yu9jq1QzcRxwwuprR2",
+    "targetType": "user"
+  },
+  {
+    "_firestoreId": "t7QoDGiuEhjmSzP01HSo",
+    "targetType": "property",
+    "action": "created",
+    "meta": {
+      "title": "Land in Saada"
+    },
+    "userId": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "targetId": "kP1In3LSmNmLFi78w0C1",
+    "timestamp": 1780734965998
+  },
+  {
+    "_firestoreId": "t9NyFB4Il9i8PCy5ZUpU",
+    "timestamp": 1780841538955,
+    "userId": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "targetId": "XcsleBfEDGSnylrHSr1rHCa2C1F3",
+    "action": "deleted",
+    "meta": {
+      "name": "علي الحاتمي"
+    },
+    "targetType": "user"
+  }
+]

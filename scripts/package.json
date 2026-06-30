@@ -1,0 +1,15 @@
+{
+  "name": "almalakiyah-migration-scripts",
+  "version": "1.0.0",
+  "description": "Firebase → Supabase data migration scripts",
+  "private": true,
+  "scripts": {
+    "export": "node export-firestore.js",
+    "import": "node import-to-supabase.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "dotenv": "^16.4.5",
+    "firebase-admin": "^12.0.0"
+  }
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "_firestoreId": "7VxRTGb34UNwclO70PweWQtc3UW2",
+    "email": "bl3076951@gmail.com",
+    "createdAt": "1737000000000",
+    "name": "عبدالله الحاتمي",
+    "phone": "92074985",
+    "role": "admin_owner"
+  },
+  {
+    "_firestoreId": "AHbVQMNdGvSJwmGG95qRdu9ggO12",
+    "username": "faisal",
+    "name": "فيصل الرواس",
+    "role": "manager",
+    "createdAt": 1780841631774,
+    "phone": "99481717",
+    "disabled": false
+  },
+  {
+    "_firestoreId": "HIO9hwwAKQhYUCs9ZDkq1pMGZTI2",
+    "disabled": false,
+    "phone": "99092433",
+    "createdAt": 1780841527854,
+    "role": "manager",
+    "name": "علي كشوب",
+    "username": "alik"
+  },
+  {
+    "_firestoreId": "UzwGk0jtz2Yu9jq1QzcRxwwuprR2",
+    "disabled": false,
+    "createdAt": 1780841667875,
+    "phone": "98043422",
+    "role": "manager",
+    "name": "علي الحاتمي",
+    "username": "alih"
+  },
+  {
+    "_firestoreId": "oaHkHJSMjqaCZm3vsiRuSprmCr02",
+    "name": "علاء الدين",
+    "role": "manager",
+    "username": "alaa",
+    "createdAt": 1780600098330,
+    "phone": "+968 7726 7075",
+    "disabled": false
+  }
+]

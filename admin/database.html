@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" />
+  <link rel="modulepreload" href="../assets/js/auth.js" />
+  <link rel="modulepreload" href="../assets/js/supabase-config.js" />
+  <link rel="modulepreload" href="../assets/js/i18n.js" />
+  <link rel="modulepreload" href="../assets/js/ui.js?v=2" />
+  <title>قاعدة البيانات · Royalty Real Estate</title>
+  <link rel="icon" href="../assets/img/favicon.png" type="image/png" />
+  
+  <link rel="stylesheet" href="../assets/css/admin.css" />
+  
+</head>
+
+<body>
+  <div id="sidebar"></div>
+
+  <main class="dashboard-main">
+    <!-- Back link -->
+    <a href="databases.html" class="eyebrow"
+      style="display:inline-flex;align-items:center;gap:.375rem;margin-bottom:1.25rem;color:var(--ink-500);text-decoration:none;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
+      <span data-i18n="db.backToDatabases"></span>
+    </a>
+
+    <!-- DB Header -->
+    <div id="dbHeader" class="db-view-header" style="display:none;">
+      <div class="db-view-header-icon" id="dbHeaderIcon"></div>
+      <div class="db-view-header-meta">
+        <h1 id="dbHeaderName"></h1>
+        <p id="dbHeaderDesc"></p>
+      </div>
+    </div>
+
+    <!-- Loading state -->
+    <div id="pageLoading" style="padding:3rem;text-align:center;color:var(--ink-400);">
+      <span class="spinner" style="width:1.5rem;height:1.5rem;display:inline-block;"></span>
+    </div>
+
+    <!-- Not found -->
+    <div id="dbNotFound" style="display:none;padding:3rem;text-align:center;color:var(--ink-500);"
+      data-i18n="db.dbNotFound"></div>
+
+    <!-- Main content -->
+    <div id="dbContent" style="display:none;">
+      <!-- Toolbar -->
+      <div class="db-toolbar">
+        <button class="btn btn-primary btn-sm" id="addRecordBtn" data-role-require="db.edit">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19" />
+            <line x1="5" y1="12" x2="19" y2="12" />
+          </svg>
+          <span data-i18n="db.addRecord"></span>
+        </button>
+        <div class="db-toolbar-sep"></div>
+        <input class="db-search" type="search" id="searchInput" data-i18n-placeholder="db.searchPlaceholder" />
+        <div class="db-toolbar-sep"></div>
+        <button class="btn btn-ghost btn-sm" id="importBtn" data-role-require="db.edit">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+          </svg>
+          <span data-i18n="db.importExcel"></span>
+        </button>
+        <!-- Export dropdown -->
+        <div style="position:relative;">
+          <button class="btn btn-ghost btn-sm" id="exportBtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            <span data-i18n="db.exportData"></span>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <div id="exportMenu" class="db-ctx-menu" style="display:none;top:2.5rem;inset-inline-start:0;z-index:999;">
+            <button class="db-ctx-item" id="exportXlsx">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M3 9h18M9 21V9" />
+              </svg>
+              <span data-i18n="db.exportXlsx"></span>
+            </button>
+            <button class="db-ctx-item" id="exportCsv">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+              </svg>
+              <span data-i18n="db.exportCsv"></span>
+            </button>
+            <button class="db-ctx-item" id="exportPdf">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+              </svg>
+              <span data-i18n="db.exportPdf"></span>
+            </button>
+          </div>
+        </div>
+        <div class="db-toolbar-sep"></div>
+        <button class="btn btn-ghost btn-sm" id="manageFieldsBtn" data-role-require="db.edit">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="8" y1="6" x2="21" y2="6" />
+            <line x1="8" y1="12" x2="21" y2="12" />
+            <line x1="8" y1="18" x2="21" y2="18" />
+            <line x1="3" y1="6" x2="3.01" y2="6" />
+            <line x1="3" y1="12" x2="3.01" y2="12" />
+            <line x1="3" y1="18" x2="3.01" y2="18" />
+          </svg>
+          <span data-i18n="db.manageFields"></span>
+        </button>
+        <span id="recordCountBadge"
+          style="margin-inline-start:auto;font-size:.75rem;color:var(--ink-400);white-space:nowrap;"></span>
+      </div>
+
+      <!-- Spreadsheet -->
+      <div class="db-spreadsheet-container">
+        <div class="db-spreadsheet-wrap">
+          <table class="db-spreadsheet" id="dbSpreadsheet">
+            <thead id="spreadsheetHead"></thead>
+            <tbody id="spreadsheetBody"></tbody>
+          </table>
+        </div>
+        <!-- Pagination -->
+        <div class="db-pagination" id="pagination" style="display:none;"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ═══════════════ MODALS ═══════════════ -->
+
+  <!-- Record Edit Modal -->
+  <div id="recordModal" class="modal-backdrop hidden">
+    <div class="modal" style="max-width:38rem;">
+      <button class="modal-close" id="recordModalClose" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+      <h3 id="recordModalTitle"></h3>
+      <div id="recordFields" class="record-fields"></div>
+      <p class="field-error hidden" id="recordError" style="margin-top:.75rem;"></p>
+      <div class="modal-actions" style="margin-top:1.25rem;">
+        <button class="btn btn-danger btn-sm" id="recordDeleteBtn" style="margin-inline-end:auto;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="3 6 5 6 21 6" />
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+          </svg>
+          <span data-i18n="db.deleteRecord"></span>
+        </button>
+        <button class="btn btn-ghost" id="recordModalCancel" data-i18n="dashboard.cancel"></button>
+        <button class="btn btn-primary" id="recordSaveBtn">
+          <span class="spinner hidden" id="recordSaveSpinner" style="width:.9rem;height:.9rem;border-width:2px;"></span>
+          <span id="recordSaveLabel" data-i18n="db.saveRecord"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add / Edit Field Modal -->
+  <div id="fieldModal" class="modal-backdrop hidden">
+    <div class="modal" style="max-width:34rem;">
+      <button class="modal-close" id="fieldModalClose" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+      <h3 id="fieldModalTitle"></h3>
+      <form id="fieldForm" style="margin-top:1rem;display:flex;flex-direction:column;gap:1rem;">
+        <div class="field-group">
+          <label class="field-label" data-i18n="db.fieldName"></label>
+          <input class="field-input" type="text" id="fieldNameInput" required
+            data-i18n-placeholder="db.fieldNamePlaceholder" />
+        </div>
+        <div class="field-group">
+          <label class="field-label" data-i18n="db.fieldType"></label>
+          <div class="field-type-grid" id="fieldTypeGrid"></div>
+        </div>
+        <div id="fieldOptionsSection" style="display:none;">
+          <div class="field-group">
+            <label class="field-label" data-i18n="db.fieldOptions"></label>
+            <p class="field-hint" data-i18n="db.fieldOptionsHint"></p>
+            <div class="option-chips" id="optionChips"></div>
+            <div style="display:flex;gap:.5rem;margin-top:.625rem;">
+              <input class="field-input" type="text" id="optionInput" style="flex:1;"
+                data-i18n-placeholder="db.addOptionHint" />
+              <button type="button" class="btn btn-ghost btn-sm" id="addOptionBtn"
+                data-i18n="dashboard.addNew"></button>
+            </div>
+          </div>
+        </div>
+        <label class="checkbox-row" style="font-size:.875rem;">
+          <input type="checkbox" id="fieldRequired" />
+          <span data-i18n="db.fieldRequired"></span>
+        </label>
+        <p class="field-error hidden" id="fieldError"></p>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" id="fieldModalCancel" data-i18n="dashboard.cancel"></button>
+          <button type="submit" class="btn btn-primary" id="fieldSaveBtn">
+            <span class="spinner hidden" id="fieldSaveSpinner"
+              style="width:.9rem;height:.9rem;border-width:2px;"></span>
+            <span id="fieldSaveLabel" data-i18n="db.saveField"></span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Manage Fields Modal -->
+  <div id="manageFieldsModal" class="modal-backdrop hidden">
+    <div class="modal" style="max-width:32rem;">
+      <button class="modal-close" id="mfModalClose" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+      <h3 data-i18n="db.manageFieldsTitle"></h3>
+      <div id="fieldsList"
+        style="margin-top:1rem;display:flex;flex-direction:column;gap:.5rem;max-height:50vh;overflow-y:auto;"></div>
+      <div class="modal-actions" style="margin-top:1.25rem;">
+        <button class="btn btn-primary btn-sm" id="mfAddFieldBtn" data-i18n="db.addField"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Import Modal -->
+  <div id="importModal" class="modal-backdrop hidden">
+    <div class="modal" style="max-width:38rem;">
+      <button class="modal-close" id="importModalClose" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+      <h3 data-i18n="db.importTitle"></h3>
+      <div id="importStep1" style="margin-top:1rem;">
+        <div class="import-drop-zone" id="importDropZone" role="button" tabindex="0">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            style="color:var(--ink-400)">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+          </svg>
+          <p data-i18n="db.importDrop"></p>
+        </div>
+        <input type="file" id="importFileInput" accept=".xlsx,.xls,.csv" style="display:none;" />
+      </div>
+      <div id="importStep2" style="display:none;">
+        <p style="font-size:.8125rem;color:var(--ink-600);margin-bottom:.5rem;" id="importRowCountMsg"></p>
+        <p class="field-label" data-i18n="db.importMapHint"></p>
+        <div class="import-col-map import-map-wrap" id="importColMap"></div>
+        <p class="field-error hidden" id="importError" style="margin-top:.75rem;"></p>
+        <div class="modal-actions" style="margin-top:1.25rem;">
+          <button class="btn btn-ghost" id="importResetBtn" data-i18n="dashboard.cancel"></button>
+          <button class="btn btn-primary" id="importConfirmBtn">
+            <span class="spinner hidden" id="importSpinner" style="width:.9rem;height:.9rem;border-width:2px;"></span>
+            <span id="importConfirmLabel" data-i18n="db.importConfirmBtn"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Column context menu (shared) -->
+  <div id="colCtxMenu" class="db-ctx-menu" style="display:none;">
+    <button class="db-ctx-item" id="ctxSortAsc">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="12" y1="20" x2="12" y2="10" />
+        <line x1="18" y1="20" x2="18" y2="4" />
+        <line x1="6" y1="20" x2="6" y2="16" />
+      </svg>
+      <span data-i18n="db.sortAsc"></span>
+    </button>
+    <button class="db-ctx-item" id="ctxSortDesc">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="12" y1="4" x2="12" y2="14" />
+        <line x1="18" y1="4" x2="18" y2="20" />
+        <line x1="6" y1="4" x2="6" y2="8" />
+      </svg>
+      <span data-i18n="db.sortDesc"></span>
+    </button>
+    <hr style="margin:.375rem 0;border:0;border-top:1px solid var(--ink-100);">
+    <button class="db-ctx-item" id="ctxEditField">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+      </svg>
+      <span data-i18n="db.editFieldMenu"></span>
+    </button>
+    <button class="db-ctx-item danger" id="ctxDeleteField">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="3 6 5 6 21 6" />
+        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+      </svg>
+      <span data-i18n="db.deleteFieldMenu"></span>
+    </button>
+  </div>
+
+  <!-- SheetJS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="../assets/js/animations.js"></script>
+  <script type="module" src="../assets/js/admin/database.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://api.cloudinary.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="modulepreload" href="../assets/js/auth.js" />
+    <link rel="modulepreload" href="../assets/js/i18n.js" />
+    <link rel="modulepreload" href="../assets/js/ui.js?v=2" />
+    <title>إضافة / تعديل عقار · الملكية للاستثمار</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="icon" href="../assets/img/favicon.png" type="image/png" />
+    
+    <link rel="stylesheet" href="../assets/css/admin.css" />
+    
+  </head>
+  <body>
+    <div id="sidebar"></div>
+
+    <main class="dashboard-main">
+      <a href="properties.html" class="prop-back">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rtl-flip">
+          <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+        </svg>
+        العقارات
+      </a>
+      <header class="dashboard-header" style="margin-bottom:2rem">
+        <h1 id="pageTitle" style="font-family:var(--font-sans-ar);font-size:1.75rem;font-weight:700;margin:0"></h1>
+      </header>
+
+      <form id="propForm" class="prop-form" novalidate>
+
+        <!-- ── معلومات العقار ── -->
+        <section class="prop-section">
+          <h2 class="prop-section-title">معلومات العقار</h2>
+
+          <!-- الاسم -->
+          <div class="field-group">
+            <label class="field-label" for="fTitle">اسم العقار <span style="color:#dc2626">*</span></label>
+            <input class="field-input" id="fTitle" name="title" type="text" dir="rtl" required placeholder="مثال: فيلا الياسمين — مسقط" />
+          </div>
+
+          <!-- الوصف -->
+          <div class="field-group">
+            <label class="field-label" for="fDesc">وصف العقار</label>
+            <textarea class="field-textarea" id="fDesc" name="description" dir="rtl" rows="5" placeholder="أدخل وصفاً تفصيلياً للعقار…"></textarea>
+          </div>
+
+          <!-- الملاحظات -->
+          <div class="field-group">
+            <label class="field-label" for="fNotes">ملاحظات</label>
+            <textarea class="field-textarea" id="fNotes" name="notes" dir="rtl" rows="3" placeholder="أدخل ملاحظات حول العقار…"></textarea>
+          </div>
+
+          <!-- نوع + فئة + حالة -->
+          <div class="prop-grid-3">
+            <div class="field-group">
+              <label class="field-label" for="fKind">نوع العقار</label>
+              <select class="field-select" id="fKind" name="kind">
+                <option value="property">عقار (مبنى)</option>
+                <option value="land">أرض</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="fCategory">فئة العقار</label>
+              <select class="field-select" id="fCategory" name="category">
+                <option value="residential">سكني</option>
+                <option value="commercial">تجاري</option>
+                <option value="agricultural">زراعي</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="fStatus">حالة العقار</label>
+              <select class="field-select" id="fStatus" name="status">
+                <option value="available">معروض</option>
+                <option value="reserved">محجوز</option>
+                <option value="sold">مباع</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- المنطقة + مساحة + سعر -->
+          <div class="prop-grid-3">
+            <div class="field-group">
+              <label class="field-label" for="fLocation">المنطقة</label>
+              <input class="field-input" id="fLocation" name="location" type="text" placeholder="مثال: السعادة، مسقط" />
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="fArea">المساحة (م²)</label>
+              <input class="field-input" id="fArea" name="area" type="number" min="0" step="any" placeholder="0" style="direction:ltr" />
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="fPrice">السعر (ريال عماني)</label>
+              <div class="price-wrap">
+                <span class="price-symbol" id="priceSymbolSlot" aria-hidden="true"></span>
+                <input class="price-field" id="fPrice" name="price" type="number" min="0" step="any" placeholder="0" />
+                <span class="price-suffix">OMR</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── الموقع والحدود (KML) ── -->
+        <section class="prop-section">
+          <h2 class="prop-section-title">الموقع على الخريطة</h2>
+
+          <!-- KML Upload -->
+          <div class="field-group">
+            <label class="field-label">ملف KML (حدود العقار)</label>
+
+            <!-- Drop zone — shown when no file uploaded -->
+            <div id="kmlDropZone" class="kml-drop-zone" role="button" tabindex="0" aria-label="رفع ملف KML">
+              <div class="kml-drop-zone-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="12" y1="18" x2="12" y2="12"/>
+                  <line x1="9" y1="15" x2="15" y2="15"/>
+                </svg>
+              </div>
+              <p>اسحب ملف KML هنا أو <strong>اضغط للاختيار</strong></p>
+              <p class="kml-accept">يدعم .kml و .kmz · يتضمن حدود العقار أو نقطة موقعه</p>
+            </div>
+            <input type="file" id="kmlFileInput" accept=".kml,.kmz" style="display:none" />
+
+            <!-- Status — shown after upload/load -->
+            <div id="kmlStatus" style="display:none"></div>
+
+            <p class="field-hint-text">سيظهر العقار تلقائياً على الخريطة التفاعلية مع حدوده بعد الحفظ.</p>
+          </div>
+
+          <!-- إحداثيات يدوية -->
+          <div class="prop-grid-2">
+            <div class="field-group">
+              <label class="field-label" for="fLat">خط العرض (Latitude)</label>
+              <input class="field-input" id="fLat" name="lat" type="number" step="any" placeholder="مثال: 23.5880" style="direction:ltr" />
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="fLng">خط الطول (Longitude)</label>
+              <input class="field-input" id="fLng" name="lng" type="number" step="any" placeholder="مثال: 58.3829" style="direction:ltr" />
+            </div>
+          </div>
+          <p class="field-hint-text">أدخل الإحداثيات يدوياً إذا لم يكن لديك ملف KML. سيظهر موقع العقار على الخريطة.</p>
+
+          <!-- رابط Google Maps -->
+          <div class="field-group">
+            <label class="field-label" for="fMapUrl">رابط الموقع على Google Maps</label>
+            <input class="field-input" id="fMapUrl" name="locationUrl" type="url"
+              placeholder="https://maps.google.com/..." dir="ltr" />
+            <p class="field-hint-text">يظهر كزر "عرض الموقع" داخل نافذة العقار في الخريطة.</p>
+          </div>
+        </section>
+
+        <!-- ── الوسائط ── -->
+        <section class="prop-section">
+          <h2 class="prop-section-title">الوسائط (صور العقار)</h2>
+          <div id="mediaUploader"></div>
+          <p id="uploadError" class="prop-error"></p>
+        </section>
+
+        <!-- أزرار -->
+        <div id="formError" class="prop-error"></div>
+        <div class="prop-actions">
+          <a href="properties.html" class="btn btn-ghost">إلغاء</a>
+          <button type="submit" class="btn btn-primary" id="saveBtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+              <polyline points="17 21 17 13 7 13 7 21"/>
+              <polyline points="7 3 7 8 15 8"/>
+            </svg>
+            <span id="saveLabel">حفظ العقار</span>
+          </button>
+        </div>
+
+      </form>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="../assets/js/animations.js"></script>
+    <script type="module" src="../assets/js/admin/property-edit.js"></script>
+</body>
+</html>

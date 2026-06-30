@@ -1,0 +1,85 @@
+[
+  {
+    "_firestoreId": "35xlPwCO7Aa07M4ZzoQW",
+    "description": "",
+    "createdAt": 1780668828262,
+    "createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "updatedAt": 1780668867426,
+    "name": "تجربة 1",
+    "category": "",
+    "icon": "🏢",
+    "fields": [
+      {
+        "options": [],
+        "id": "fld_mq109mv73wfj",
+        "type": "text",
+        "order": 0,
+        "name": "Command / Action",
+        "required": false
+      },
+      {
+        "type": "text",
+        "options": [],
+        "id": "fld_mq109n5xwy7g",
+        "required": false,
+        "name": "Description",
+        "order": 1
+      },
+      {
+        "type": "text",
+        "options": [],
+        "id": "fld_mq109nj6vgqr",
+        "name": "Example",
+        "required": false,
+        "order": 2
+      }
+    ]
+  },
+  {
+    "_firestoreId": "RiycXCJrGsmgFqowXnWv",
+    "description": "عدد العملاء",
+    "createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "updatedAt": 1780689242252,
+    "createdAt": 1780668691814,
+    "category": "",
+    "name": "تجربة 2",
+    "fields": [
+      {
+        "order": 0,
+        "required": false,
+        "name": "الاسم",
+        "id": "fld_mq106gutr2km",
+        "options": [],
+        "type": "text"
+      },
+      {
+        "order": 1,
+        "name": "رقم الجوال",
+        "required": false,
+        "options": [],
+        "id": "fld_mq106unzepjq",
+        "type": "phone"
+      },
+      {
+        "type": "location",
+        "options": [],
+        "id": "fld_mq107eu77e7x",
+        "required": false,
+        "name": "الموقع",
+        "order": 2
+      }
+    ],
+    "icon": "users"
+  },
+  {
+    "_firestoreId": "TNTQ5qXeRgIeLsKk6y6e",
+    "createdAt": 1782309550835,
+    "updatedAt": 1782309550835,
+    "createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "description": "4554",
+    "icon": "building-2",
+    "fields": [],
+    "name": "5454",
+    "category": "5454"
+  }
+]

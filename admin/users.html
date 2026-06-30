@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link rel="dns-prefetch" href="https://api.cloudinary.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    />
+    <link rel="modulepreload" href="../assets/js/auth.js" />
+    <link rel="modulepreload" href="../assets/js/i18n.js" />
+    <link rel="modulepreload" href="../assets/js/ui.js?v=2" />
+    <title>المستخدمون · Almalakiyah Real Estate</title>
+    <link rel="icon" href="../assets/img/favicon.png" type="image/png" />
+    
+    <link rel="stylesheet" href="../assets/css/admin.css" />
+  </head>
+  <body>
+    <div id="sidebar"></div>
+
+    <main class="dashboard-main">
+      <header class="dashboard-header dashboard-header-split">
+        <div>
+          <p class="eyebrow" data-i18n="dashboard.usersEyebrow"></p>
+          <h1 data-i18n="dashboard.usersTitle"></h1>
+          <p data-i18n="dashboard.usersDescription"></p>
+        </div>
+        <button
+          class="btn btn-primary"
+          id="addUserBtn"
+          data-i18n="dashboard.addUser"
+        ></button>
+      </header>
+
+      <div class="table-card" id="usersTable">
+        <div class="loading-state"><span class="spinner"></span></div>
+      </div>
+    </main>
+
+    <div id="userModal" class="modal-backdrop hidden">
+      <div class="modal">
+        <button class="modal-close" id="closeUserModal" aria-label="Close">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+        <h3 id="userModalTitle"></h3>
+
+        <form
+          id="userForm"
+          style="display: flex; flex-direction: column; gap: 1.25rem"
+        >
+          <div class="form-grid form-grid-2">
+            <div class="field-group">
+              <label class="field-label" data-i18n="dashboard.userName"></label>
+              <input class="field-input" name="name" required />
+            </div>
+            <div class="field-group" id="usernameGroup">
+              <label
+                class="field-label"
+                data-i18n="dashboard.userUsername"
+              ></label>
+              <input
+                class="field-input num"
+                name="username"
+                dir="ltr"
+                pattern="[a-z0-9._-]+"
+                autocapitalize="off"
+              />
+              <span
+                class="field-hint"
+                data-i18n="dashboard.userUsernameHint"
+              ></span>
+            </div>
+          </div>
+          <div class="form-grid form-grid-2">
+            <div class="field-group" id="passwordGroup">
+              <label
+                class="field-label"
+                data-i18n="dashboard.userPassword"
+              ></label>
+              <input
+                class="field-input num"
+                name="password"
+                type="password"
+                dir="ltr"
+                minlength="6"
+                autocomplete="new-password"
+              />
+              <span
+                class="field-hint"
+                id="pwdHint"
+                data-i18n="dashboard.userPasswordHint"
+              ></span>
+            </div>
+            <div class="field-group">
+              <label
+                class="field-label"
+                data-i18n="dashboard.userPhone"
+              ></label>
+              <input
+                class="field-input num"
+                name="phone"
+                type="tel"
+                dir="ltr"
+              />
+              <span
+                class="field-hint"
+                data-i18n="dashboard.userPhoneHint"
+              ></span>
+            </div>
+          </div>
+          <div class="field-group">
+            <label class="field-label" data-i18n="dashboard.tableRole"></label>
+            <select class="field-select" name="role">
+              <option value="admin_owner">admin_owner — مالك النظام</option>
+              <option value="manager">manager — مدير</option>
+              <option value="editor" selected>editor — محرّر</option>
+              <option value="viewer">viewer — مشاهد</option>
+            </select>
+          </div>
+
+          <p class="field-error hidden" id="userFormError"></p>
+
+          <div class="modal-actions">
+            <button
+              type="button"
+              class="btn btn-ghost"
+              id="cancelUser"
+              data-i18n="dashboard.cancel"
+            ></button>
+            <button type="submit" class="btn btn-primary" id="saveUserBtn">
+              <span
+                class="spinner hidden"
+                id="userSaveSpinner"
+                style="width: 0.9rem; height: 0.9rem; border-width: 2px"
+              ></span>
+              <span id="saveUserLabel" data-i18n="dashboard.saveUser"></span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="../assets/js/animations.js"></script>
+    <script type="module" src="../assets/js/admin/users.js"></script>
+</body>
+</html>

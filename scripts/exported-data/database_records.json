@@ -1,0 +1,332 @@
+[
+  {
+    "_firestoreId": "2crjAF63RJ2w0R7W81SE",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "_createdAt": 1780668867793,
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "fld_mq109mv73wfj": "/compact",
+    "fld_mq109nj6vgqr": "/compact",
+    "fld_mq109n5xwy7g": "Summarize context to save tokens",
+    "_updatedAt": 1780668867793
+  },
+  {
+    "_firestoreId": "5HVfGZRR2tnkNgDmg3N1",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "fld_mq109nj6vgqr": "Refactor this file",
+    "fld_mq109n5xwy7g": "Improve structure and readability",
+    "_updatedAt": 1780668867793,
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "fld_mq109mv73wfj": "Refactor code",
+    "_createdAt": 1780668867793
+  },
+  {
+    "_firestoreId": "5Zos94rsCDXIRjqKZB6D",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "_updatedAt": 1780668867793,
+    "fld_mq109n5xwy7g": "Switch AI model",
+    "fld_mq109nj6vgqr": "/model opus",
+    "fld_mq109mv73wfj": "/model",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "_createdAt": 1780668867793
+  },
+  {
+    "_firestoreId": "BQY12ROvssD1uPkbFeGm",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "fld_mq109mv73wfj": "Fix bugs",
+    "_createdAt": 1780668867793,
+    "fld_mq109nj6vgqr": "Fix all errors in project",
+    "fld_mq109n5xwy7g": "Auto-detect and fix issues",
+    "_updatedAt": 1780668867793
+  },
+  {
+    "_firestoreId": "F2YqBrIQ5rVlBXzKbvYz",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "_updatedAt": 1780668880876,
+    "fld_mq109n5xwy7g": "Show all available commands",
+    "fld_mq109nj6vgqr": "/help",
+    "_createdAt": 1780668880876,
+    "fld_mq109mv73wfj": "/help",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1"
+  },
+  {
+    "_firestoreId": "I8ScqCOvAOSUPx0xYumv",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "fld_mq109nj6vgqr": "Commit all changes with message",
+    "fld_mq109n5xwy7g": "Commit changes",
+    "_updatedAt": 1780668867793,
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "fld_mq109mv73wfj": "Git commit",
+    "_createdAt": 1780668867793
+  },
+  {
+    "_firestoreId": "IiwNlCYPtmhD1KDbhi8Y",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "_createdAt": 1780668867793,
+    "fld_mq109mv73wfj": "Create agents",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "fld_mq109n5xwy7g": "Split work into multiple AI agents",
+    "_updatedAt": 1780668867793,
+    "fld_mq109nj6vgqr": "Create 4 agents: UI, Backend, QA, Docs"
+  },
+  {
+    "_firestoreId": "J6x7F3OkOuJIw0vSZau1",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "fld_mq109n5xwy7g": "Generate unit tests",
+    "_updatedAt": 1780668867793,
+    "fld_mq109nj6vgqr": "Create tests for inventory system",
+    "fld_mq109mv73wfj": "Write tests",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "_createdAt": 1780668867793
+  },
+  {
+    "_firestoreId": "J7YbnIsUbWtXLy4g38WX",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "fld_mq109n5xwy7g": "Search inside project files",
+    "_updatedAt": 1780668880877,
+    "fld_mq109nj6vgqr": "Find inventory system",
+    "fld_mq109mv73wfj": "Find code",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "_createdAt": 1780668880877
+  },
+  {
+    "_firestoreId": "JVRHzzkfLbpA7TrPkAGg",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "fld_mq109n5xwy7g": "Diagnose setup issues",
+    "_updatedAt": 1780668867793,
+    "fld_mq109nj6vgqr": "/doctor",
+    "_createdAt": 1780668867793,
+    "fld_mq109mv73wfj": "/doctor",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1"
+  },
+  {
+    "_firestoreId": "Mcy2645ciK8YcLpcBBgZ",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "_createdAt": 1780668880877,
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "fld_mq109mv73wfj": "/model",
+    "fld_mq109nj6vgqr": "/model opus",
+    "fld_mq109n5xwy7g": "Switch AI model",
+    "_updatedAt": 1780668880877
+  },
+  {
+    "_firestoreId": "VCBVbmVlw4J2somnQiFR",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "_createdAt": 1780668880877,
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "fld_mq109mv73wfj": "/exit",
+    "fld_mq109nj6vgqr": "/exit",
+    "fld_mq109n5xwy7g": "Exit Claude Code",
+    "_updatedAt": 1780668880877
+  },
+  {
+    "_firestoreId": "VWtkLb3sP0rhI2zswHeR",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "fld_mq109n5xwy7g": "Improve structure and readability",
+    "_updatedAt": 1780668880877,
+    "fld_mq109nj6vgqr": "Refactor this file",
+    "_createdAt": 1780668880877,
+    "fld_mq109mv73wfj": "Refactor code",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1"
+  },
+  {
+    "_firestoreId": "ZCGDBrN8yTJ6h382uAA0",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "fld_mq109n5xwy7g": "Generate unit tests",
+    "_updatedAt": 1780668880877,
+    "fld_mq109nj6vgqr": "Create tests for inventory system",
+    "fld_mq109mv73wfj": "Write tests",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "_createdAt": 1780668880877
+  },
+  {
+    "_firestoreId": "bQimd3XplA7VJ4GyWfre",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "fld_mq109n5xwy7g": "Show all available commands",
+    "_updatedAt": 1780668867793,
+    "fld_mq109nj6vgqr": "/help",
+    "_createdAt": 1780668867793,
+    "fld_mq109mv73wfj": "/help",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1"
+  },
+  {
+    "_firestoreId": "cWuAx8G0MSWB6cvKyJYo",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "fld_mq109mv73wfj": "/agents",
+    "_createdAt": 1780668867793,
+    "fld_mq109nj6vgqr": "/agents",
+    "fld_mq109n5xwy7g": "Manage multiple agents",
+    "_updatedAt": 1780668867793
+  },
+  {
+    "_firestoreId": "d2NZpsNxxrIucqpCDWCS",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "_createdAt": 1780668867793,
+    "fld_mq109mv73wfj": "Create files",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "_updatedAt": 1780668867793,
+    "fld_mq109n5xwy7g": "Generate new files",
+    "fld_mq109nj6vgqr": "Create README.md"
+  },
+  {
+    "_firestoreId": "d39PyakIGwP1ayWaVB3p",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "fld_mq109nj6vgqr": "/clear",
+    "fld_mq109n5xwy7g": "Clear current session",
+    "_updatedAt": 1780668880877,
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "fld_mq109mv73wfj": "/clear",
+    "_createdAt": 1780668880877
+  },
+  {
+    "_firestoreId": "dPMURBDYMucseM8zuGNL",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "_createdAt": 1780668880877,
+    "fld_mq109mv73wfj": "/agents",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "fld_mq109n5xwy7g": "Manage multiple agents",
+    "_updatedAt": 1780668880877,
+    "fld_mq109nj6vgqr": "/agents"
+  },
+  {
+    "_firestoreId": "dj3RmtlHQsNKiivytM3F",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "_createdAt": 1780668880877,
+    "fld_mq109mv73wfj": "Create files",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "_updatedAt": 1780668880877,
+    "fld_mq109n5xwy7g": "Generate new files",
+    "fld_mq109nj6vgqr": "Create README.md"
+  },
+  {
+    "_firestoreId": "f9ElSPvUY8Dr74ND7tRk",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "fld_mq109nj6vgqr": "/clear",
+    "fld_mq109n5xwy7g": "Clear current session",
+    "_updatedAt": 1780668867793,
+    "_createdAt": 1780668867793,
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "fld_mq109mv73wfj": "/clear"
+  },
+  {
+    "_firestoreId": "hMcu53MmTJIkg9Y25QHl",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "_createdAt": 1780668880877,
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "fld_mq109mv73wfj": "Create agents",
+    "fld_mq109nj6vgqr": "Create 4 agents: UI, Backend, QA, Docs",
+    "fld_mq109n5xwy7g": "Split work into multiple AI agents",
+    "_updatedAt": 1780668880877
+  },
+  {
+    "_firestoreId": "j0MqcO7su4gYErlTHjyo",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "fld_mq109mv73wfj": "/doctor",
+    "_createdAt": 1780668880876,
+    "fld_mq109nj6vgqr": "/doctor",
+    "fld_mq109n5xwy7g": "Diagnose setup issues",
+    "_updatedAt": 1780668880876
+  },
+  {
+    "_firestoreId": "jnQljXg4JdXOc6V2WcfE",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "fld_mq109nj6vgqr": "Analyze this project structure",
+    "_updatedAt": 1780668880877,
+    "fld_mq109n5xwy7g": "Understand full codebase",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "fld_mq109mv73wfj": "Analyze project",
+    "_createdAt": 1780668880877
+  },
+  {
+    "_firestoreId": "mXsRZTuzjFPjWIwZq5QW",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "_createdAt": 1780668880877,
+    "fld_mq109mv73wfj": "/compact",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "fld_mq109n5xwy7g": "Summarize context to save tokens",
+    "_updatedAt": 1780668880877,
+    "fld_mq109nj6vgqr": "/compact"
+  },
+  {
+    "_firestoreId": "oHtLMYaAr8ba9xi64Nog",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "_createdAt": 1780668880877,
+    "fld_mq109mv73wfj": "Git commit",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "fld_mq109n5xwy7g": "Commit changes",
+    "_updatedAt": 1780668880877,
+    "fld_mq109nj6vgqr": "Commit all changes with message"
+  },
+  {
+    "_firestoreId": "ohZV76NL6mfwJMK7le8g",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "fld_mq109mv73wfj": "/status",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "_createdAt": 1780668867793,
+    "fld_mq109n5xwy7g": "Show current session status",
+    "_updatedAt": 1780668867793,
+    "fld_mq109nj6vgqr": "/status"
+  },
+  {
+    "_firestoreId": "sRxWB4i1wE6z0ungovea",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "_createdAt": 1780668880877,
+    "fld_mq109mv73wfj": "Fix bugs",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "fld_mq109n5xwy7g": "Auto-detect and fix issues",
+    "_updatedAt": 1780668880877,
+    "fld_mq109nj6vgqr": "Fix all errors in project"
+  },
+  {
+    "_firestoreId": "syE00I8ZIdySSt2uxSsG",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "fld_mq109n5xwy7g": "Understand full codebase",
+    "_updatedAt": 1780668867793,
+    "fld_mq109nj6vgqr": "Analyze this project structure",
+    "fld_mq109mv73wfj": "Analyze project",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "_createdAt": 1780668867793
+  },
+  {
+    "_firestoreId": "wz8DiV7c9enL9YVrUos1",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "fld_mq109nj6vgqr": "/exit",
+    "fld_mq109n5xwy7g": "Exit Claude Code",
+    "_updatedAt": 1780668867793,
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "fld_mq109mv73wfj": "/exit",
+    "_createdAt": 1780668867793
+  },
+  {
+    "_firestoreId": "xdaJFSORnPs9CMgXpn4M",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "_createdAt": 1780668867793,
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "fld_mq109mv73wfj": "Find code",
+    "fld_mq109nj6vgqr": "Find inventory system",
+    "fld_mq109n5xwy7g": "Search inside project files",
+    "_updatedAt": 1780668867793
+  },
+  {
+    "_firestoreId": "ymbgoTe83HWFbkuumqgQ",
+    "_parentId": "35xlPwCO7Aa07M4ZzoQW",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "fld_mq109mv73wfj": "/status",
+    "_createdAt": 1780668880877,
+    "fld_mq109nj6vgqr": "/status",
+    "fld_mq109n5xwy7g": "Show current session status",
+    "_updatedAt": 1780668880877
+  },
+  {
+    "_firestoreId": "LvaEE6fh6emNn6vM3M2l",
+    "_parentId": "RiycXCJrGsmgFqowXnWv",
+    "fld_mq106unzepjq": "9999999",
+    "_createdBy": "9njzPW45NGf3UZkkD6xsxdKrPbk1",
+    "_createdAt": 1780668795688,
+    "fld_mq107eu77e7x": "مسقط",
+    "fld_mq106gutr2km": "محمد",
+    "_updatedAt": 1780668795688
+  }
+]

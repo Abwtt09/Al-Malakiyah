@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>الملكية للإستثمار | العقارات</title>
+  <link rel="icon" href="/assets/img/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body class="bg-bg-dark text-text-primary font-ar antialiased overflow-x-hidden selection:bg-gold selection:text-bg-dark">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-dark border-b border-white/10 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-full border border-gold flex items-center justify-center group-hover:bg-gold/20 transition-all duration-300">
+          <span class="text-gold font-bold">M</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-lg font-bold tracking-wide text-white">الملكية للإستثمار</span>
+          <span class="text-[10px] tracking-widest text-gold uppercase font-en">Almalakiyah Real Estate</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="/" class="text-white/70 hover:text-gold transition-colors font-medium text-sm">الرئيسية</a>
+        <a href="/properties.html" class="text-white hover:text-gold transition-colors font-medium text-sm">العقارات</a>
+        <a href="/projects.html" class="text-white/70 hover:text-gold transition-colors font-medium text-sm">المشاريع</a>
+        <a href="/about.html" class="text-white/70 hover:text-gold transition-colors font-medium text-sm">من نحن</a>
+        <a href="/contact.html" class="text-white/70 hover:text-gold transition-colors font-medium text-sm">اتصل بنا</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <button id="lang-toggle" class="text-white/70 hover:text-white font-en text-sm font-medium transition-colors">EN</button>
+        <a href="/contact.html" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 bg-gold hover:bg-gold-hover text-bg-dark font-semibold rounded-full text-sm transition-all duration-300">ابدأ الآن</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="pt-40 pb-20 px-6 relative z-20 text-center">
+    <div class="max-w-4xl mx-auto fade-up">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">عقاراتنا <span class="text-gold">الفاخرة</span></h1>
+      <p class="text-white/60 text-lg max-w-2xl mx-auto">اكتشف مجموعة منتقاة من أرقى العقارات التي تناسب أسلوب حياتك الاستثنائي.</p>
+    </div>
+  </section>
+
+  <!-- Properties Grid -->
+  <section class="py-10 px-6 relative z-20 mb-20">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Property Card -->
+      <div class="glass-dark rounded-3xl overflow-hidden group fade-up">
+        <div class="h-64 bg-white/5 relative overflow-hidden">
+          <!-- Placeholder Image -->
+          <div class="absolute inset-0 bg-gradient-to-t from-bg-dark to-transparent z-10 opacity-60"></div>
+          <div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+          <div class="absolute top-4 right-4 z-20 bg-gold text-bg-dark text-xs font-bold px-3 py-1.5 rounded-full">للبيع</div>
+        </div>
+        <div class="p-8 relative z-20">
+          <h3 class="text-2xl font-bold mb-2 group-hover:text-gold transition-colors">فيلا روما الفاخرة</h3>
+          <p class="text-white/50 text-sm mb-6 flex items-center gap-2">
+            <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.242-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+            دبي، الإمارات العربية المتحدة
+          </p>
+          <div class="flex justify-between items-center border-t border-white/10 pt-6">
+            <div class="text-gold font-bold text-xl">15,000,000 درهم</div>
+            <a href="#" class="text-sm font-medium text-white hover:text-gold transition-colors flex items-center gap-2">
+              التفاصيل
+              <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 bg-black py-10 px-6 z-20 relative">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/50">
+      <p>© 2026 الملكية للإستثمار. جميع الحقوق محفوظة.</p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-gold transition-colors">سياسة الخصوصية</a>
+        <a href="#" class="hover:text-gold transition-colors">الشروط والأحكام</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>

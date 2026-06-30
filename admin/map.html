@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="preconnect" href="https://unpkg.com" crossorigin />
+  <link rel="modulepreload" href="../assets/js/auth.js" />
+  <link rel="modulepreload" href="../assets/js/supabase-config.js" />
+  <link rel="modulepreload" href="../assets/js/i18n.js" />
+  <link rel="modulepreload" href="../assets/js/ui.js?v=2" />
+  <title>الخريطة التفاعلية · الملكية للاستثمار</title>
+  <link rel="icon" href="../assets/img/favicon.png" type="image/png" />
+  
+  <link rel="stylesheet" href="../assets/css/admin.css" />
+
+</head>
+
+<body class="map-page">
+
+  <!-- Sidebar injected by setupDashboard -->
+  <script src="../assets/js/admin/map-fallback.js"></script>
+  <div id="sidebar"></div>
+
+  <!-- Full-screen map application -->
+  <div class="map-app">
+    <!-- Scoped map loading overlay — sits underneath floating dashboard menus -->
+    <div id="mapLoading" style="
+          position: absolute;
+          inset: 0;
+          z-index: 100;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #1a1a1a;
+          flex-direction: column;
+          gap: 1rem;
+          transition: opacity 0.5s;
+        ">
+      <div style="
+            width: 2.5rem;
+            height: 2.5rem;
+            border: 3px solid rgba(198, 162, 79, 0.15);
+            border-top-color: #c6a24f;
+            border-radius: 50%;
+            animation: mpSpin 0.8s linear infinite;
+          "></div>
+      <p style="
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.875rem;
+            font-family: system-ui;
+          ">
+        جاري تحميل الخريطة...
+      </p>
+    </div>
+
+    <!-- Leaflet map canvas (fills entire .map-app) -->
+    <div id="mapCanvas"></div>
+
+    <!-- ── Search overlay (positioned relative to layout) ─────────── -->
+    <div class="mp-search-overlay" id="mpSearchOverlay">
+      <div class="mp-search-row">
+        <div class="mp-search-bar">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input type="search" id="mpSearch" placeholder="اسم العقار أو المنطقة..." autocomplete="off" />
+        </div>
+        <!-- Filter toggle button -->
+        <button class="mp-filter-toggle" id="mpFilterToggle" aria-label="فتح لوحة الفلتر" title="فلترة العقارات">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="8" y1="12" x2="16" y2="12" />
+            <line x1="11" y1="18" x2="13" y2="18" />
+          </svg>
+          <span class="mp-filter-dot"></span>
+        </button>
+      </div>
+      <!-- Search results container -->
+      <div class="mp-search-results-box glass is-hidden" id="mpSearchResultsBox">
+        <div class="mp-results-list" id="mpResultsList"></div>
+      </div>
+    </div>
+
+    <!-- ── Layer switcher (bottom-left) ──────────────────────────── -->
+    <div class="mp-layer-btn" id="mpLayerBtn">
+      <button class="active" id="satelliteBtn">
+        <span class="mp-layer-icon">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M2 12h20" />
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+          </svg>
+        </span>
+        Satellite
+      </button>
+      <button id="normalBtn">
+        <span class="mp-layer-icon">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+            <line x1="8" y1="2" x2="8" y2="18" />
+            <line x1="16" y1="6" x2="16" y2="22" />
+          </svg>
+        </span>
+        Normal
+      </button>
+    </div>
+
+    <!-- ── Filter Panel (hidden by default, toggle via filter button) ── -->
+    <aside class="mp-panel glass is-hidden" id="mpPanel">
+      <div class="mp-panel-head">
+        <span class="mp-panel-title">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="8" y1="12" x2="16" y2="12" />
+            <line x1="11" y1="18" x2="13" y2="18" />
+          </svg>
+          فلترة العقارات
+        </span>
+        <button class="mp-panel-close" id="mpPanelClose" aria-label="إغلاق">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="mp-panel-body">
+        <!-- نوع العقار -->
+        <div class="mp-filter-section" style="padding-top: 1.125rem">
+          <p class="mp-filter-label">نوع العقار</p>
+          <div class="mp-pills" id="kindPills">
+            <button class="mp-pill active" data-kind="">الكل</button>
+            <button class="mp-pill" data-kind="property">عقار (مبنى)</button>
+            <button class="mp-pill" data-kind="land">أرض</button>
+          </div>
+        </div>
+
+        <!-- فئة العقار -->
+        <div class="mp-filter-section">
+          <p class="mp-filter-label">فئة العقار</p>
+          <div class="mp-pills" id="catPills">
+            <button class="mp-pill active" data-cat="">الكل</button>
+            <button class="mp-pill" data-cat="residential">سكني</button>
+            <button class="mp-pill" data-cat="commercial">تجاري</button>
+            <button class="mp-pill" data-cat="agricultural">زراعي</button>
+          </div>
+        </div>
+
+        <!-- الحالة -->
+        <div class="mp-filter-section">
+          <p class="mp-filter-label">الحالة</p>
+          <div class="mp-pills" id="statusPills">
+            <button class="mp-pill active" data-status="">الكل</button>
+            <button class="mp-pill" data-status="available">معروض</button>
+            <button class="mp-pill" data-status="reserved">محجوز</button>
+            <button class="mp-pill" data-status="sold">مباع</button>
+          </div>
+        </div>
+
+        <!-- المنطقة (dynamic select) -->
+        <div class="mp-filter-section">
+          <p class="mp-filter-label">المنطقة</p>
+          <select class="mp-select" id="filterRegion">
+            <option value="">كل المناطق</option>
+          </select>
+        </div>
+
+        <!-- المساحة (dual slider) -->
+        <div class="mp-filter-section">
+          <p class="mp-filter-label">المساحة (م²)</p>
+          <div class="mp-slider-wrap">
+            <div class="mp-slider-values">
+              <span>من: <span class="mp-slider-value" id="areaMinVal">0</span></span>
+              <span>إلى: <span class="mp-slider-value" id="areaMaxVal">∞</span></span>
+            </div>
+            <div class="mp-dual-slider" id="areaSlider">
+              <div class="mp-track"></div>
+              <div class="mp-track-fill" id="areaTrackFill"></div>
+              <input type="range" id="filterAreaMin" min="0" max="100000" step="500" value="0" />
+              <input type="range" id="filterAreaMax" min="0" max="100000" step="500" value="100000" />
+            </div>
+          </div>
+        </div>
+
+        <!-- السعر (dual slider) -->
+        <div class="mp-filter-section">
+          <p class="mp-filter-label">السعر (ريال عماني)</p>
+          <div class="mp-slider-wrap">
+            <div class="mp-slider-values">
+              <span>من: <span class="mp-slider-value" id="priceMinVal">0</span></span>
+              <span>إلى: <span class="mp-slider-value" id="priceMaxVal">∞</span></span>
+            </div>
+            <div class="mp-dual-slider" id="priceSlider">
+              <div class="mp-track"></div>
+              <div class="mp-track-fill" id="priceTrackFill"></div>
+              <input type="range" id="filterPriceMin" min="0" max="5000000" step="5000" value="0" />
+              <input type="range" id="filterPriceMax" min="0" max="5000000" step="5000" value="5000000" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Reset -->
+        <button class="mp-reset" id="mpReset">↺ إعادة تعيين الفلتر</button>
+
+      </div>
+    </aside>
+
+    <!-- ── Property Detail Card ───────────────────────────────── -->
+    <div class="mp-detail glass" id="mpDetail">
+      <div class="mp-detail-header">
+        <img id="mpDetailImg" class="mp-detail-img" src="" alt="" style="display: none" />
+        <div id="mpDetailImgPlaceholder" class="mp-detail-img-placeholder">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <circle cx="8.5" cy="8.5" r="1.5" />
+            <polyline points="21 15 16 10 5 21" />
+          </svg>
+        </div>
+        <button class="mp-detail-close-btn" id="mpDetailClose" aria-label="إغلاق">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+        <div class="mp-detail-status-bar" id="mpDetailStatusBar"></div>
+      </div>
+
+      <div class="mp-detail-body">
+        <h2 class="mp-detail-title" id="mpDetailTitle">—</h2>
+
+        <div class="mp-detail-grid">
+          <div class="mp-detail-stat">
+            <span class="mp-detail-stat-label">السعر</span>
+            <span class="mp-detail-stat-value price" id="mpDetailPrice">—</span>
+          </div>
+          <div class="mp-detail-stat">
+            <span class="mp-detail-stat-label">المساحة</span>
+            <span class="mp-detail-stat-value" id="mpDetailArea">—</span>
+          </div>
+        </div>
+
+        <div class="mp-detail-loc" id="mpDetailLocRow">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            style="flex-shrink: 0">
+            <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          <span id="mpDetailLoc">—</span>
+        </div>
+
+        <p class="mp-detail-desc" id="mpDetailDesc" style="display: none"></p>
+
+        <!-- ملاحظات -->
+        <p class="mp-detail-notes" id="mpDetailNotes" style="display: none; font-size: 0.8125rem; color: #d9b86c; background: rgba(198,162,79,0.08); border-left: 2.5px solid var(--gold); padding: 0.5rem 0.75rem; border-radius: 4px; margin-top: 0.75rem; white-space: pre-wrap;"></p>
+
+        <div class="mp-detail-actions">
+          <a href="#" id="mpDetailFull" class="mp-detail-btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+            عرض التفاصيل الكاملة
+          </a>
+          <a href="#" id="mpDetailGmaps" class="mp-detail-btn-secondary" target="_blank" rel="noopener"
+            style="display: none">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            فتح في خرائط جوجل
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.map-app -->
+
+  <script type="module" src="../assets/js/admin/map.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="../assets/js/animations.js"></script>
+</body>
+
+</html>

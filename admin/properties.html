@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://api.cloudinary.com" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" />
+  <link rel="modulepreload" href="../assets/js/auth.js" />
+  <link rel="modulepreload" href="../assets/js/i18n.js" />
+  <link rel="modulepreload" href="../assets/js/ui.js?v=2" />
+  <title>العقارات</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="icon" href="../assets/img/favicon.png" type="image/png" />
+  
+  <link rel="stylesheet" href="../assets/css/admin.css" />
+</head>
+
+<body>
+  <div id="sidebar"></div>
+
+  <main class="dashboard-main">
+    <header class="dashboard-header dashboard-header-split">
+      <div>
+        <p class="eyebrow" data-i18n="properties.eyebrow"></p>
+        <h1 data-i18n="dashboard.properties"></h1>
+      </div>
+      <a href="property-edit.html" class="btn btn-primary" data-role-require="properties.create"
+        data-i18n="dashboard.newProperty"></a>
+    </header>
+
+    <!-- ── Filters ── -->
+    <div class="prop-filters" style="background:var(--glass-bg-strong);border:1px solid var(--glass-border);border-radius:1rem;padding:1.25rem;box-shadow:var(--glass-shadow-lg);margin-bottom:1.5rem;display:flex;flex-direction:column;gap:1rem;">
+      <div class="prop-filters-top" style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+        <!-- Search input group -->
+        <div class="dashboard-toolbar" style="flex:1;min-width:18rem;max-width:none;margin-bottom:0;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input id="searchInput" type="search" data-i18n-placeholder="dashboard.searchProperties" style="flex:1;border:0;outline:none;background:transparent;font-family:inherit;font-size:0.875rem;" />
+        </div>
+
+        <!-- Type filter -->
+        <select id="typeFilter" class="prop-filter-select" style="min-width:9rem;height:2.625rem;border-radius:0.5rem;border:1px solid var(--glass-border);background:var(--surface,#fff);padding:0 0.75rem;font-size:0.875rem;color:var(--ink-700);">
+          <option value="all" data-i18n="dashboard.filterAllTypes">جميع الأنواع</option>
+          <option value="land" data-i18n="properties.typeLand"></option>
+          <option value="villa" data-i18n="properties.typeVilla"></option>
+          <option value="apartment" data-i18n="properties.typeApartment"></option>
+          <option value="building" data-i18n="properties.typeBuilding"></option>
+          <option value="room" data-i18n="properties.typeRoom"></option>
+          <option value="office" data-i18n="properties.typeOffice"></option>
+          <option value="warehouse" data-i18n="properties.typeWarehouse"></option>
+          <option value="commercial" data-i18n="properties.typeCommercial"></option>
+          <option value="mixed-use" data-i18n="properties.typeMixedUse"></option>
+        </select>
+
+        <!-- Region filter -->
+        <select id="regionFilter" class="prop-filter-select" style="min-width:9rem;height:2.625rem;border-radius:0.5rem;border:1px solid var(--glass-border);background:var(--surface,#fff);padding:0 0.75rem;font-size:0.875rem;color:var(--ink-700);">
+          <option value="all" data-i18n="dashboard.allRegions">جميع المناطق</option>
+        </select>
+
+        <!-- Advanced Filters Button -->
+        <button id="btnAdvancedToggle" class="btn btn-outline" style="display:inline-flex;align-items:center;gap:0.5rem;height:2.625rem;font-size:0.875rem;cursor:pointer;border-radius:0.5rem;border:1px solid rgba(198,162,79,0.25);background:none;color:var(--gold);padding:0 1rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="21" x2="4" y2="14"></line>
+            <line x1="4" y1="10" x2="4" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12" y2="3"></line>
+            <line x1="20" y1="21" x2="20" y2="16"></line>
+            <line x1="20" y1="12" x2="20" y2="3"></line>
+            <line x1="1" y1="14" x2="7" y2="14"></line>
+            <line x1="9" y1="8" x2="15" y2="8"></line>
+            <line x1="17" y1="16" x2="23" y2="16"></line>
+          </svg>
+          <span>تصفية متقدمة</span>
+        </button>
+
+        <span class="filter-count" id="propCount" style="white-space:nowrap;font-size:0.8125rem;color:var(--gray);margin-inline-start:auto;"></span>
+      </div>
+
+      <!-- Advanced Expandable Section -->
+      <div id="advancedFiltersSection" style="display:none;border-top:1px solid var(--glass-border);padding-top:1rem;margin-top:0.25rem;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:1rem;">
+          <!-- Price Range -->
+          <div style="display:flex;flex-direction:column;gap:0.375rem;">
+            <label style="font-size:0.75rem;font-weight:600;color:var(--ink-500);" data-i18n="dashboard.priceRange"></label>
+            <div style="display:flex;align-items:center;gap:0.5rem;background:var(--surface,#fff);border:1px solid var(--glass-border);border-radius:0.5rem;padding:0.375rem 0.75rem;">
+              <input class="prop-range-input" id="minPrice" type="number" min="0" data-i18n-placeholder="dashboard.minPrice" placeholder="0" style="flex:1;border:0;outline:none;background:transparent;text-align:right;font-size:0.875rem;" />
+              <span style="font-size:0.75rem;color:var(--gray-light);">إلى</span>
+              <input class="prop-range-input" id="maxPrice" type="number" min="0" data-i18n-placeholder="dashboard.maxPrice" placeholder="∞" style="flex:1;border:0;outline:none;background:transparent;text-align:right;font-size:0.875rem;" />
+              <span style="font-size:0.75rem;color:var(--gray);font-weight:500;">ر.ع</span>
+            </div>
+          </div>
+          <!-- Area Range -->
+          <div style="display:flex;flex-direction:column;gap:0.375rem;">
+            <label style="font-size:0.75rem;font-weight:600;color:var(--ink-500);" data-i18n="dashboard.areaRange"></label>
+            <div style="display:flex;align-items:center;gap:0.5rem;background:var(--surface,#fff);border:1px solid var(--glass-border);border-radius:0.5rem;padding:0.375rem 0.75rem;">
+              <input class="prop-range-input" id="minArea" type="number" min="0" data-i18n-placeholder="dashboard.minArea" placeholder="0" style="flex:1;border:0;outline:none;background:transparent;text-align:right;font-size:0.875rem;" />
+              <span style="font-size:0.75rem;color:var(--gray-light);">إلى</span>
+              <input class="prop-range-input" id="maxArea" type="number" min="0" data-i18n-placeholder="dashboard.maxArea" placeholder="∞" style="flex:1;border:0;outline:none;background:transparent;text-align:right;font-size:0.875rem;" />
+              <span style="font-size:0.75rem;color:var(--gray);font-weight:500;">م²</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status pills -->
+      <div class="prop-status-pills" id="statusFilters" style="display:flex;gap:0.375rem;flex-wrap:wrap;border-top:1px solid var(--glass-border);padding-top:0.75rem;margin-top:0.25rem;">
+        <button class="prop-filter-btn active" data-status="all" data-i18n="properties.filterAll"></button>
+        <button class="prop-filter-btn" data-status="available" data-i18n="properties.statusAvailable"></button>
+        <button class="prop-filter-btn" data-status="under-development" data-i18n="properties.statusUnderDevelopment"></button>
+        <button class="prop-filter-btn" data-status="reserved" data-i18n="properties.statusReserved"></button>
+        <button class="prop-filter-btn" data-status="sold" data-i18n="properties.statusSold"></button>
+        <button class="prop-filter-btn" data-status="rented" data-i18n="properties.statusRented"></button>
+      </div>
+    </div>
+
+    <!-- ── Grid ── -->
+    <div id="propGrid" class="prop-grid">
+      <div class="loading-state" style="grid-column:1/-1"><span class="spinner"></span></div>
+    </div>
+  </main>
+
+  <!-- Delete modal -->
+  <div id="deleteModal" class="modal-backdrop hidden">
+    <div class="modal">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+      <h3 data-i18n="dashboard.deleteConfirm"></h3>
+      <p id="deleteName" style="font-size:0.875rem;color:var(--ink-700);margin-top:0.5rem"></p>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="cancelDelete" data-i18n="dashboard.cancel"></button>
+        <button class="btn btn-danger" id="confirmDelete" data-i18n="dashboard.delete"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="../assets/js/animations.js"></script>
+  <script type="module" src="../assets/js/admin/properties.js"></script>
+</body>
+
+</html>
