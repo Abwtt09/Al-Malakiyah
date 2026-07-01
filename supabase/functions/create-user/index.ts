@@ -43,23 +43,59 @@ serve(async (req) => {
       });
     }
 
-    // Check that the caller has admin_owner or manager role
-    const adminClient = createClient(supabaseUrl, serviceRoleKey);
-    const { data: callerProfile } = await adminClient
-      .from('profiles')
-      .select('role, disabled')
-      .eq('id', caller.id)
-      .single();
-
-    if (!callerProfile || callerProfile.disabled || !['admin_owner', 'admin'].includes(callerProfile.role)) {
-      return new Response(JSON.stringify({ error: 'Insufficient permissions' }), {
-        status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
-    }
-
-    // Parse request body
+    // Parse request body first
     const body = await req.json();
     const { action, uid, email, password, role = 'viewer', name, username, phone } = body;
+
+    const isSelfUpdate = action === 'complete-setup' && uid === caller.id;
+    const adminClient = createClient(supabaseUrl, serviceRoleKey);
+
+    if (!isSelfUpdate) {
+      // Check that the caller has admin_owner or admin role
+      const { data: callerProfile } = await adminClient
+        .from('profiles')
+        .select('role, disabled')
+        .eq('id', caller.id)
+        .single();
+
+      if (!callerProfile || callerProfile.disabled || !['admin_owner', 'admin'].includes(callerProfile.role)) {
+        return new Response(JSON.stringify({ error: 'Insufficient permissions' }), {
+          status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
+    }
+
+    // Handle complete-setup action (self update)
+    if (action === 'complete-setup') {
+      if (!uid || uid !== caller.id) {
+        return new Response(JSON.stringify({ error: 'Unauthorized self-update' }), {
+          status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
+
+      if (!email || !password) {
+        return new Response(JSON.stringify({ error: 'email and password are required' }), {
+          status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
+
+      // Update the user's email and password using the admin client (bypasses double confirmation & format checks on old email)
+      const { error: updateError } = await adminClient.auth.admin.updateUserById(uid, {
+        email: email,
+        password: password,
+        email_confirm: true,
+      });
+
+      if (updateError) {
+        return new Response(JSON.stringify({ error: updateError.message }), {
+          status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
+
+      return new Response(JSON.stringify({ success: true }), {
+        status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
 
     // Handle Delete User action
     if (action === 'delete') {

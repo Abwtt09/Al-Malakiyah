@@ -79,16 +79,25 @@ import { requireAuth, signOut } from "../auth.js";
       label.textContent = "جاري الحفظ والتهيئة...";
 
       try {
-        // 1. Update Auth Email (using the user's real email) and Password
-        const targetEmail = email;
-
-        const { error: authError } = await supabase.auth.updateUser({
-          email: targetEmail,
-          password: password
+        // 1. Update Auth Email and Password via Edge Function (to bypass GoTrue confirmation & format validations on the old email)
+        const { data: resData, error: authError } = await supabase.functions.invoke('create-user', {
+          body: {
+            action: 'complete-setup',
+            uid: currentUser.uid,
+            email: email,
+            password: password
+          }
         });
 
         if (authError) {
-          throw authError;
+          let errMsg = authError.message || String(authError);
+          try {
+            if (authError.context) {
+              const body = await authError.context.json();
+              if (body.error) errMsg = body.error;
+            }
+          } catch {}
+          throw new Error(errMsg);
         }
 
         // 2. Update DB profile with real email, username, name, and set is_setup_complete to true
@@ -103,7 +112,7 @@ import { requireAuth, signOut } from "../auth.js";
         // 3. Update local cache
         writeCachedProfile({
           uid: currentUser.uid,
-          email: targetEmail,
+          email: email,
           ...currentProfile,
           username: username,
           name: fullName,
