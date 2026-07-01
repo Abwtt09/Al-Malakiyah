@@ -128,6 +128,6 @@ import { requireAuth, signOut } from "../auth.js";
         errorEl.textContent = err.message || "حدث خطأ أثناء حفظ الإعدادات.";
         errorEl.classList.remove("hidden");
         btn.removeAttribute("disabled");
-        label.textContent = "حفظ وإكمال الإعداد / Save & Complete Setup";
+        label.textContent = "حفظ وإكمال الإعداد";
       }
     });
