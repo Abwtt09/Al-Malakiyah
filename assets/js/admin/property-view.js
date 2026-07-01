@@ -3,8 +3,8 @@ import {
       applyTranslations,
       onLangChange,
     } from "../i18n.js";
-    import { setupDashboard } from "../portal-ui.js";
-    import { getProperty, listPropertyDocs } from "../db.js";
+    import { setupDashboard, toast } from "../portal-ui.js";
+    import { getProperty, listPropertyDocs, approveProperty, logActivity } from "../db.js";
     import {
       priceHtml,
       statusLabel,
@@ -156,6 +156,9 @@ import {
       // Badges
       document.getElementById("pvBadges").innerHTML = [
         `<span class="badge badge-${p.status}">${escapeHtml(statusLabel(p.status))}</span>`,
+        p.approved === false
+          ? `<span class="badge" style="background:#fee2e2;color:#ef4444;">بانتظار الاعتماد</span>`
+          : "",
         p.type
           ? `<span class="badge badge-muted">${escapeHtml(typeLabel(p.type))}</span>`
           : "",
@@ -166,6 +169,34 @@ import {
           ? `<span class="badge" style="background:#fef3c7;color:#92400e;display:inline-flex;align-items:center;gap:0.25rem;">مميز <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="display:inline-block;vertical-align:middle;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>`
           : "",
       ].join("");
+
+      // Approve Button wiring
+      const approveBtn = document.getElementById("pvApproveBtn");
+      if (approveBtn) {
+        if (p.approved === false) {
+          approveBtn.classList.remove("hidden");
+          approveBtn.onclick = async () => {
+            approveBtn.disabled = true;
+            try {
+              await approveProperty(p.id);
+              await logActivity({
+                action: 'approved',
+                targetType: 'property',
+                targetId: p.id,
+                userId: currentUserId,
+                meta: { title: localize(p.title) },
+              });
+              toast('تم اعتماد العقار بنجاح ✓');
+              setTimeout(() => location.reload(), 600);
+            } catch (err) {
+              alert(err.message);
+              approveBtn.disabled = false;
+            }
+          };
+        } else {
+          approveBtn.classList.add("hidden");
+        }
+      }
 
       // Price
       const priceEl = document.getElementById("pvPriceEl");
@@ -430,8 +461,13 @@ import {
       });
     }
 
+    let currentUserId = null;
+    let currentRole = 'viewer';
+
     (async () => {
       const ctx = await setupDashboard("properties.html");
+      currentUserId = ctx.user.uid;
+      currentRole = ctx.role;
       applyTranslations();
       const { applyRoleGuards } = await import("../roles.js");
       applyRoleGuards(document.getElementById("pvContent"), ctx.role);

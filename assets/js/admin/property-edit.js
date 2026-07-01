@@ -1,6 +1,6 @@
 import { initI18n, applyTranslations, t } from '../i18n.js';
       import { setupDashboard, toast } from '../portal-ui.js';
-      import { getProperty, createProperty, updateProperty, logActivity } from '../db.js';
+      import { getProperty, createProperty, updateProperty, logActivity, listUsers, sendMessage } from '../db.js';
       import { uploadToStorage, getPublicUrl } from '../storage.js';
       import { escapeHtml, OMR_SYMBOL_SVG, localize } from '../ui.js?v=2';
 
@@ -16,6 +16,7 @@ import { initI18n, applyTranslations, t } from '../i18n.js';
       const saveBtn   = document.getElementById('saveBtn');
       const saveLabel = document.getElementById('saveLabel');
       let currentUserId = null;
+      let currentRole = 'viewer';
 
       document.getElementById('pageTitle').textContent =
         mode === 'create' ? 'إضافة عقار جديد' : 'تعديل بيانات العقار';
@@ -327,6 +328,7 @@ import { initI18n, applyTranslations, t } from '../i18n.js';
             currency: 'OMR',
             images,
           };
+
           if (description) payload.description = description;
           if (notes) payload.notes = notes;
           else payload.notes = null;
@@ -346,6 +348,31 @@ import { initI18n, applyTranslations, t } from '../i18n.js';
           if (mode === 'create') {
             payload.createdBy = currentUserId;
             savedId = await createProperty(payload);
+
+            // Send notification message if the creator is not the admin owner or admin
+            if (currentRole !== 'admin_owner' && currentRole !== 'admin') {
+              try {
+                const users = await listUsers();
+                const admins = users.filter(u => (u.role === 'admin_owner' || u.role === 'admin') && !u.disabled);
+                const toUids = admins.map(u => u.id);
+
+                if (toUids.length > 0) {
+                  const sender = users.find(u => u.id === currentUserId);
+                  const senderName = sender ? sender.name : 'موظف';
+
+                  await sendMessage({
+                    fromUid: currentUserId,
+                    fromName: senderName,
+                    subject: 'عقار جديد مضاف وبانتظار الاعتماد',
+                    body: `قام الموظف ${senderName} بإضافة عقار جديد بعنوان "${title}" وهو بانتظار الاعتماد والمراجعة.`,
+                    toUids: toUids,
+                    recipientsSummary: 'ملاك النظام',
+                  });
+                }
+              } catch (msgErr) {
+                console.error('[Notification failed]', msgErr);
+              }
+            }
           } else {
             await updateProperty(id, payload);
           }
@@ -438,6 +465,8 @@ import { initI18n, applyTranslations, t } from '../i18n.js';
             require: mode === 'create' ? 'properties.create' : 'properties.edit',
           });
           currentUserId = ctx.user.uid;
+          currentRole = ctx.role;
+
         } catch (err) {
           const silent = ['not signed in', 'no access', 'permission denied'];
           if (!silent.includes(err.message)) console.error('[property-edit]', err);

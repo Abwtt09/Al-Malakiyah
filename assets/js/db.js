@@ -15,7 +15,7 @@ import { supabase } from './supabase-config.js';
 function propFromRow(row) {
   if (!row) return null;
   const { id, created_at, updated_at, created_by, status, category, featured,
-          boundary, boundary_source, coordinates, data, ...rest } = row;
+          boundary, boundary_source, coordinates, approved, archived, data, ...rest } = row;
   return {
     id,
     createdAt: created_at,
@@ -27,6 +27,8 @@ function propFromRow(row) {
     boundary,
     boundarySource: boundary_source,
     coordinates,
+    approved: approved !== false,
+    archived: archived === true,
     ...(data || {}),  // spread all dynamic Firestore fields
     ...rest,
   };
@@ -35,7 +37,7 @@ function propFromRow(row) {
 /** Convert a flat UI object → properties DB row for insert/update. */
 function propToRow(obj) {
   const { id, createdAt, updatedAt, createdBy, status, category, featured,
-          boundary, boundarySource, coordinates, ...rest } = obj;
+          boundary, boundarySource, coordinates, approved, archived, ...rest } = obj;
   return {
     status: status ?? null,
     category: category ?? null,
@@ -43,6 +45,8 @@ function propToRow(obj) {
     boundary: boundary ?? null,
     boundary_source: boundarySource ?? null,
     coordinates: coordinates ?? null,
+    approved: approved !== false,
+    archived: archived === true,
     data: rest,  // everything else stored as JSONB
   };
 }
@@ -89,7 +93,22 @@ export async function updateProperty(id, data) {
 }
 
 export async function deleteProperty(id) {
+  const { error } = await supabase.from('properties').update({ archived: true, updated_at: Date.now() }).eq('id', id);
+  if (error) throw error;
+}
+
+export async function hardDeleteProperty(id) {
   const { error } = await supabase.from('properties').delete().eq('id', id);
+  if (error) throw error;
+}
+
+export async function restoreProperty(id) {
+  const { error } = await supabase.from('properties').update({ archived: false, updated_at: Date.now() }).eq('id', id);
+  if (error) throw error;
+}
+
+export async function approveProperty(id) {
+  const { error } = await supabase.from('properties').update({ approved: true, updated_at: Date.now() }).eq('id', id);
   if (error) throw error;
 }
 

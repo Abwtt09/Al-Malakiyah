@@ -325,6 +325,7 @@ import {
         };
 
         function matchesFilter(p) {
+          if (p.archived === true) return false;
           if (F.kind && p.kind !== F.kind) return false;
           if (F.category) {
             const cat =

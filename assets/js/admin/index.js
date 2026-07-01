@@ -41,9 +41,10 @@ import { initI18n, applyTranslations } from "../i18n.js";
 
       watchProperties(
         function (props) {
-          document.getElementById("qcTotal").textContent = props.length;
-          document.getElementById("qcAvailable").textContent = props.filter(function (p) { return p.status === "available"; }).length;
-          var withCoords = props.filter(function (p) { return p.coordinates && p.coordinates.lat && p.coordinates.lng; }).length;
+          var activeProps = props.filter(function (p) { return p.archived !== true; });
+          document.getElementById("qcTotal").textContent = activeProps.length;
+          document.getElementById("qcAvailable").textContent = activeProps.filter(function (p) { return p.status === "available"; }).length;
+          var withCoords = activeProps.filter(function (p) { return p.coordinates && p.coordinates.lat && p.coordinates.lng; }).length;
           document.getElementById("qcMap").textContent = withCoords;
         },
         function (err) { console.error("[watchProperties]", err); }

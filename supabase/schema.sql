@@ -106,8 +106,13 @@ CREATE INDEX IF NOT EXISTS properties_created_idx  ON public.properties (created
 
 ALTER TABLE public.properties ENABLE ROW LEVEL SECURITY;
 
--- Public read (the satellite map is public-facing)
-CREATE POLICY "properties_select" ON public.properties FOR SELECT USING (true);
+-- Public read for approved & unarchived; staff can read all approved (even archived); owners and creators can read all (including unapproved)
+CREATE POLICY "properties_select" ON public.properties FOR SELECT USING (
+  (approved = TRUE AND public.is_staff()) OR
+  (approved = TRUE AND archived = FALSE) OR
+  public.is_owner() OR
+  (auth.uid() = created_by)
+);
 CREATE POLICY "properties_insert" ON public.properties FOR INSERT WITH CHECK (public.is_editor());
 CREATE POLICY "properties_update" ON public.properties FOR UPDATE USING (public.is_editor());
 CREATE POLICY "properties_delete" ON public.properties FOR DELETE USING (public.is_owner());
@@ -332,3 +337,42 @@ BEGIN
   RETURN v_email;
 END;
 $$;
+
+-- ── Property Approval & Archiving Schema Modifications ────────────────────────
+ALTER TABLE public.properties ADD COLUMN IF NOT EXISTS approved BOOLEAN NOT NULL DEFAULT TRUE;
+ALTER TABLE public.properties ADD COLUMN IF NOT EXISTS archived BOOLEAN NOT NULL DEFAULT FALSE;
+
+-- Trigger: Enforce unapproved status for non-owners on property INSERT
+CREATE OR REPLACE FUNCTION public.handle_property_insert()
+RETURNS TRIGGER LANGUAGE plpgsql SECURITY DEFINER AS $$
+BEGIN
+  -- If user is NOT owner and auth.uid() is not null, override approved to FALSE
+  IF auth.uid() IS NOT NULL AND NOT public.is_owner() THEN
+    NEW.approved := FALSE;
+  END IF;
+  RETURN NEW;
+END;
+$$;
+
+DROP TRIGGER IF EXISTS on_property_insert ON public.properties;
+CREATE TRIGGER on_property_insert
+  BEFORE INSERT ON public.properties
+  FOR EACH ROW EXECUTE FUNCTION public.handle_property_insert();
+
+-- Trigger: Prevent non-owners from approving a property on UPDATE
+CREATE OR REPLACE FUNCTION public.handle_property_update()
+RETURNS TRIGGER LANGUAGE plpgsql SECURITY DEFINER AS $$
+BEGIN
+  -- If user is NOT owner, override approved to OLD value (non-owners cannot approve)
+  IF auth.uid() IS NOT NULL AND NOT public.is_owner() THEN
+    NEW.approved := OLD.approved;
+  END IF;
+  RETURN NEW;
+END;
+$$;
+
+DROP TRIGGER IF EXISTS on_property_update ON public.properties;
+CREATE TRIGGER on_property_update
+  BEFORE UPDATE ON public.properties
+  FOR EACH ROW EXECUTE FUNCTION public.handle_property_update();
+
