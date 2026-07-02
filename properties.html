@@ -3,89 +3,211 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>الملكية للإستثمار | العقارات</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@200;300;400;500;600;700&family=Inter:wght@200;300;400;500&display=swap" />
+  
+  <title>العقارات | Al-Malakiyah</title>
   <link rel="icon" href="/assets/img/favicon.png" type="image/png" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'cream': '#F6F5F2',
+            'charcoal': '#0B0B0B',
+            'charcoal-light': '#141414',
+            'gold': '#C6A24F',
+            'text-muted': 'rgba(247, 247, 247, 0.6)'
+          },
+          fontFamily: {
+            'ar': ['"IBM Plex Sans Arabic"', 'sans-serif'],
+            'en': ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
-<body class="bg-bg-dark text-text-primary font-ar antialiased overflow-x-hidden selection:bg-gold selection:text-bg-dark">
+<body class="section-light">
 
-  <!-- Header -->
-  <header class="fixed top-0 left-0 right-0 z-50 glass-dark border-b border-white/10 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-      <a href="/" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-full border border-gold flex items-center justify-center group-hover:bg-gold/20 transition-all duration-300">
-          <span class="text-gold font-bold">M</span>
-        </div>
-        <div class="flex flex-col">
-          <span class="text-lg font-bold tracking-wide text-white">الملكية للإستثمار</span>
-          <span class="text-[10px] tracking-widest text-gold uppercase font-en">Almalakiyah Real Estate</span>
-        </div>
+  <!-- Luxury Cursor -->
+  <div class="luxury-cursor"></div>
+
+  <!-- Page Transition Layer -->
+  <div class="page-transition fixed inset-0 bg-[#0B0B0B] z-[100] translate-y-[100%]"></div>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay text-white">
+    <div class="absolute top-8 left-8">
+      <button class="menu-toggle flex flex-col gap-[6px] w-10 h-10 justify-center items-center relative z-50">
+        <span class="w-8 h-[1px] bg-white absolute rotate-45"></span>
+        <span class="w-8 h-[1px] bg-white absolute -rotate-45"></span>
+      </button>
+    </div>
+    <nav class="flex flex-col text-center font-ar font-light space-y-6 text-3xl">
+      <a href="index.html" class="menu-link hover:text-gold transition-colors">الرئيسية</a>
+      <a href="about.html" class="menu-link hover:text-gold transition-colors">عن الملكية</a>
+      <a href="projects.html" class="menu-link hover:text-gold transition-colors">المشاريع</a>
+      <a href="properties.html" class="menu-link text-gold">العقارات</a>
+      <a href="interactive.html" class="menu-link hover:text-gold transition-colors">المنصة التفاعلية</a>
+      <a href="contact.html" class="menu-link hover:text-gold transition-colors">اتصل بنا</a>
+    </nav>
+  </div>
+
+  <!-- Floating Glass Header (Light Mode active on this page initially) -->
+  <header class="glass-header light-mode text-charcoal fixed top-0 left-0 right-0 z-40 py-6 transition-all duration-300">
+    <div class="max-w-[1800px] mx-auto px-6 md:px-12 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-4 group magnetic-wrap">
+        <span class="font-en text-sm font-bold tracking-[0.2em] uppercase">Al-Malakiyah</span>
       </a>
-      <nav class="hidden md:flex items-center gap-8">
-        <a href="/" class="text-white/70 hover:text-gold transition-colors font-medium text-sm">الرئيسية</a>
-        <a href="/properties.html" class="text-white hover:text-gold transition-colors font-medium text-sm">العقارات</a>
-        <a href="/projects.html" class="text-white/70 hover:text-gold transition-colors font-medium text-sm">المشاريع</a>
-        <a href="/about.html" class="text-white/70 hover:text-gold transition-colors font-medium text-sm">من نحن</a>
-        <a href="/contact.html" class="text-white/70 hover:text-gold transition-colors font-medium text-sm">اتصل بنا</a>
+      
+      <nav class="hidden md:flex items-center gap-12 text-xs font-en tracking-[0.15em] uppercase text-charcoal/80">
+        <a href="about.html" class="hover:text-gold transition-colors">About</a>
+        <a href="projects.html" class="hover:text-gold transition-colors">Projects</a>
+        <a href="properties.html" class="hover:text-gold transition-colors">Properties</a>
+        <a href="interactive.html" class="hover:text-gold transition-colors">Interactive</a>
+        <a href="contact.html" class="hover:text-gold transition-colors">Contact</a>
       </nav>
-      <div class="flex items-center gap-4">
-        <button id="lang-toggle" class="text-white/70 hover:text-white font-en text-sm font-medium transition-colors">EN</button>
-        <a href="/contact.html" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 bg-gold hover:bg-gold-hover text-bg-dark font-semibold rounded-full text-sm transition-all duration-300">ابدأ الآن</a>
+
+      <div class="flex items-center gap-8">
+        <button class="hidden md:block text-xs font-en tracking-widest hover:text-gold transition-colors magnetic-wrap">عربي</button>
+        <button class="menu-toggle md:hidden flex flex-col justify-center items-center gap-[6px] w-10 h-10 z-50">
+          <span class="w-8 h-[1px] bg-current"></span>
+          <span class="w-8 h-[1px] bg-current"></span>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- Page Header -->
-  <section class="pt-40 pb-20 px-6 relative z-20 text-center">
-    <div class="max-w-4xl mx-auto fade-up">
-      <h1 class="text-5xl md:text-6xl font-bold mb-6">عقاراتنا <span class="text-gold">الفاخرة</span></h1>
-      <p class="text-white/60 text-lg max-w-2xl mx-auto">اكتشف مجموعة منتقاة من أرقى العقارات التي تناسب أسلوب حياتك الاستثنائي.</p>
+  <!-- Editorial Magazine Title -->
+  <section class="pt-48 pb-20 px-6 md:px-12 max-w-[1800px] mx-auto">
+    <div class="flex flex-col md:flex-row justify-between items-end border-b border-charcoal/10 pb-12">
+      <h1 class="split-text text-6xl md:text-[8vw] font-light font-ar leading-none text-charcoal">
+        مقتنيات <br/><span class="font-bold">نادرة</span>
+      </h1>
+      <div class="text-right mt-10 md:mt-0 max-w-sm">
+        <p class="split-text-lines text-charcoal/60 font-light text-lg">
+          استكشف مجموعتنا الحصرية من العقارات الفاخرة، المصممة لتتجاوز التوقعات وتلبي تطلعات النخبة.
+        </p>
+      </div>
     </div>
   </section>
 
-  <!-- Properties Grid -->
-  <section class="py-10 px-6 relative z-20 mb-20">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      
-      <!-- Property Card -->
-      <div class="glass-dark rounded-3xl overflow-hidden group fade-up">
-        <div class="h-64 bg-white/5 relative overflow-hidden">
-          <!-- Placeholder Image -->
-          <div class="absolute inset-0 bg-gradient-to-t from-bg-dark to-transparent z-10 opacity-60"></div>
-          <div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-          <div class="absolute top-4 right-4 z-20 bg-gold text-bg-dark text-xs font-bold px-3 py-1.5 rounded-full">للبيع</div>
-        </div>
-        <div class="p-8 relative z-20">
-          <h3 class="text-2xl font-bold mb-2 group-hover:text-gold transition-colors">فيلا روما الفاخرة</h3>
-          <p class="text-white/50 text-sm mb-6 flex items-center gap-2">
-            <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.242-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-            دبي، الإمارات العربية المتحدة
-          </p>
-          <div class="flex justify-between items-center border-t border-white/10 pt-6">
-            <div class="text-gold font-bold text-xl">15,000,000 درهم</div>
-            <a href="#" class="text-sm font-medium text-white hover:text-gold transition-colors flex items-center gap-2">
-              التفاصيل
-              <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-            </a>
+  <!-- Property Editorial 1 (Full Width Transition to Margin) -->
+  <section class="pb-32 px-6 md:px-12 max-w-[1800px] mx-auto">
+    <a href="#" class="block group property-card">
+      <div class="relative w-full h-[70vh] md:h-[90vh] img-parallax-wrap clip-path-reveal mb-12">
+        <img src="https://images.unsplash.com/photo-1613490908592-fd5e48f43fb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Villa" class="transition-transform duration-[2s] group-hover:scale-105">
+      </div>
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end">
+        <div class="max-w-xl">
+          <p class="font-en text-xs tracking-[0.2em] uppercase text-charcoal/50 mb-4">Dubai, Palm Jumeirah</p>
+          <h2 class="text-4xl md:text-6xl font-bold font-ar text-charcoal mb-6">فيلا روما الفاخرة</h2>
+          <div class="flex gap-8 font-en text-sm text-charcoal/60">
+            <span>5 Bedrooms</span>
+            <span>7 Bathrooms</span>
+            <span>12,000 SQFT</span>
           </div>
+        </div>
+        <div class="mt-8 md:mt-0 text-left md:text-right flex flex-col items-start md:items-end">
+          <p class="font-en text-3xl font-light text-charcoal mb-4">$15,000,000</p>
+          <span class="inline-block text-xs font-en uppercase tracking-[0.2em] border-b border-charcoal pb-2 group-hover:text-gold group-hover:border-gold transition-colors">Inquire Now</span>
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <!-- Property Editorial 2 (Offset Magazine Layout) -->
+  <section class="py-32 bg-charcoal text-white section-dark">
+    <div class="px-6 md:px-12 max-w-[1800px] mx-auto flex flex-col md:flex-row gap-20 items-center">
+      <div class="w-full md:w-5/12 order-2 md:order-1">
+        <p class="font-en text-xs tracking-[0.2em] uppercase text-white/50 mb-4">Riyadh, KAFD</p>
+        <h2 class="text-4xl md:text-6xl font-bold font-ar mb-6">بنتهاوس السحاب</h2>
+        <p class="text-white/70 font-light text-lg mb-10 max-w-md">إطلالة بانورامية لا تضاهى على أفق الرياض المالي، مساحات مفتوحة وتصميم داخلي من توقيع أشهر المصممين العالميين.</p>
+        
+        <div class="flex gap-8 font-en text-sm text-white/60 mb-10 border-t border-white/10 pt-6">
+          <span>4 Bedrooms</span>
+          <span>5 Bathrooms</span>
+          <span>6,500 SQFT</span>
+        </div>
+        
+        <div class="flex items-end gap-12">
+          <p class="font-en text-2xl font-light text-white">Price on Request</p>
+          <a href="contact.html" class="inline-block text-xs font-en uppercase tracking-[0.2em] border-b border-white pb-2 hover:text-gold hover:border-gold transition-colors magnetic-wrap">Inquire Now</a>
+        </div>
+      </div>
+      
+      <div class="w-full md:w-7/12 order-1 md:order-2">
+        <a href="#" class="block group property-card">
+          <div class="relative w-full h-[60vh] md:h-[80vh] img-parallax-wrap clip-path-reveal">
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Penthouse" class="transition-transform duration-[2s] group-hover:scale-105">
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Monolithic Cinematic Footer (Dark) -->
+  <footer class="section-dark pt-32 pb-12 px-6 md:px-12 relative z-30 overflow-hidden bg-charcoal-light">
+    <div class="max-w-[1800px] mx-auto">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 mb-32">
+        <div class="md:col-span-5">
+          <h3 class="split-text text-3xl md:text-5xl font-light text-white mb-10 leading-tight">
+            هل أنت مستعد لمناقشة <br/><span class="text-gold font-bold">مستقبلك الاستثماري؟</span>
+          </h3>
+          <form class="flex gap-4 border-b border-white/20 pb-4">
+            <input type="email" placeholder="Enter your email" class="bg-transparent w-full focus:outline-none text-white font-en placeholder-white/30" dir="ltr">
+            <button type="button" class="text-xs font-en uppercase tracking-[0.2em] text-gold hover:text-white transition-colors magnetic-wrap">Connect</button>
+          </form>
+        </div>
+
+        <div class="md:col-span-2 md:col-start-8">
+          <p class="text-[10px] font-en tracking-[0.3em] uppercase text-white/30 mb-8">Navigation</p>
+          <ul class="space-y-4 text-sm font-en tracking-widest text-white/70">
+            <li><a href="about.html" class="hover:text-gold transition-colors">About Us</a></li>
+            <li><a href="projects.html" class="hover:text-gold transition-colors">Projects</a></li>
+            <li><a href="properties.html" class="hover:text-gold transition-colors">Properties</a></li>
+            <li><a href="interactive.html" class="hover:text-gold transition-colors">Interactive</a></li>
+            <li><a href="contact.html" class="hover:text-gold transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-3">
+          <p class="text-[10px] font-en tracking-[0.3em] uppercase text-white/30 mb-8">Contact</p>
+          <ul class="space-y-4 text-sm font-en text-white/70">
+            <li><a href="mailto:info@almalakiyah.com" class="hover:text-gold transition-colors">info@almalakiyah.com</a></li>
+            <li><a href="tel:+966501234567" class="hover:text-gold transition-colors">+966 50 123 4567</a></li>
+            <li class="pt-4 text-white/30 text-xs tracking-widest uppercase">Salalah, Oman</li>
+          </ul>
         </div>
       </div>
 
-    </div>
-  </section>
+      <div class="w-full text-center border-t border-white/10 pt-16 relative overflow-hidden">
+        <h1 class="text-[15vw] font-bold leading-none tracking-tighter text-white opacity-[0.03] select-none pointer-events-none uppercase font-en -mb-[4vw]">Almalakiyah</h1>
+      </div>
 
-  <!-- Footer -->
-  <footer class="border-t border-white/10 bg-black py-10 px-6 z-20 relative">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/50">
-      <p>© 2026 الملكية للإستثمار. جميع الحقوق محفوظة.</p>
-      <div class="flex gap-6">
-        <a href="#" class="hover:text-gold transition-colors">سياسة الخصوصية</a>
-        <a href="#" class="hover:text-gold transition-colors">الشروط والأحكام</a>
+      <div class="flex flex-col md:flex-row justify-between items-center text-[10px] font-en tracking-[0.2em] text-white/30 uppercase relative z-10">
+        <p>© 2026 Almalakiyah. All Rights Reserved.</p>
+        <div class="flex gap-8 mt-6 md:mt-0">
+          <a href="#" class="hover:text-white transition-colors">Instagram</a>
+          <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
+          <a href="#" class="hover:text-white transition-colors">Twitter</a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <script type="module" src="/assets/js/main.js"></script>
+  <!-- External Libraries -->
+  <script src="https://unpkg.com/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/split-type"></script>
+  <script src="/assets/js/main.js"></script>
 </body>
 </html>

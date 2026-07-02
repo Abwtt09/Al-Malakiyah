@@ -63,8 +63,8 @@ import { requireAuth, signOut } from "../auth.js";
         return;
       }
 
-      if (!/^[a-z0-9_]{3,20}$/.test(username)) {
-        errorEl.textContent = "اسم المستخدم يجب أن يتكون من 3 إلى 20 حرفاً إنجليزياً أو أرقام أو شرطة سفلية فقط.";
+      if (!/^[a-z0-9_-]{3,20}$/.test(username)) {
+        errorEl.textContent = "اسم المستخدم يجب أن يتكون من 3 إلى 20 حرفاً إنجليزياً أو أرقام أو شرطة سفلية أو شرطة عادية (-) فقط.";
         errorEl.classList.remove("hidden");
         return;
       }

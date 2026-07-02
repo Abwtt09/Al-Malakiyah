@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@200;300;400;500;600;700&family=Inter:wght@200;300;400;500&display=swap" />
+  
+  <title>المنصة التفاعلية | Al-Malakiyah 3D</title>
+  <link rel="icon" href="/assets/img/favicon.png" type="image/png" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'cream': '#F6F5F2',
+            'charcoal': '#0B0B0B',
+            'charcoal-light': '#141414',
+            'gold': '#C6A24F',
+            'text-muted': 'rgba(247, 247, 247, 0.6)'
+          },
+          fontFamily: {
+            'ar': ['"IBM Plex Sans Arabic"', 'sans-serif'],
+            'en': ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body class="section-dark bg-charcoal text-[#F7F7F7]">
+
+  <!-- Luxury Cursor -->
+  <div class="luxury-cursor"></div>
+
+  <!-- Page Transition Layer -->
+  <div class="page-transition fixed inset-0 bg-[#0B0B0B] z-[100] translate-y-[100%]"></div>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay text-white">
+    <div class="absolute top-8 left-8">
+      <button class="menu-toggle flex flex-col gap-[6px] w-10 h-10 justify-center items-center relative z-50">
+        <span class="w-8 h-[1px] bg-white absolute rotate-45"></span>
+        <span class="w-8 h-[1px] bg-white absolute -rotate-45"></span>
+      </button>
+    </div>
+    <nav class="flex flex-col text-center font-ar font-light space-y-6 text-3xl">
+      <a href="index.html" class="menu-link hover:text-gold transition-colors">الرئيسية</a>
+      <a href="about.html" class="menu-link hover:text-gold transition-colors">عن الملكية</a>
+      <a href="projects.html" class="menu-link hover:text-gold transition-colors">المشاريع</a>
+      <a href="properties.html" class="menu-link hover:text-gold transition-colors">العقارات</a>
+      <a href="interactive.html" class="menu-link text-gold">المنصة التفاعلية</a>
+      <a href="contact.html" class="menu-link hover:text-gold transition-colors">اتصل بنا</a>
+    </nav>
+  </div>
+
+  <!-- Floating Glass Header -->
+  <header class="glass-header fixed top-0 left-0 right-0 z-40 py-6 transition-all duration-300">
+    <div class="max-w-[1800px] mx-auto px-6 md:px-12 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-4 group magnetic-wrap">
+        <span class="font-en text-sm font-bold tracking-[0.2em] uppercase text-white transition-colors duration-300 logo-text">Al-Malakiyah</span>
+      </a>
+      
+      <nav class="hidden md:flex items-center gap-12 text-xs font-en tracking-[0.15em] uppercase text-white/80">
+        <a href="about.html" class="hover:text-gold transition-colors">About</a>
+        <a href="projects.html" class="hover:text-gold transition-colors">Projects</a>
+        <a href="properties.html" class="hover:text-gold transition-colors">Properties</a>
+        <a href="interactive.html" class="text-gold">Interactive</a>
+        <a href="contact.html" class="hover:text-gold transition-colors">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-8">
+        <button class="hidden md:block text-xs font-en tracking-widest hover:text-gold transition-colors magnetic-wrap text-white">عربي</button>
+        <button class="menu-toggle md:hidden flex flex-col justify-center items-center gap-[6px] w-10 h-10 z-50 text-white">
+          <span class="w-8 h-[1px] bg-current"></span>
+          <span class="w-8 h-[1px] bg-current"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[70vh] w-full flex items-center justify-center overflow-hidden pt-32 pb-20">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-[#0B0B0B]/85 z-10"></div>
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="3D Real Estate Visual" class="w-full h-full object-cover">
+    </div>
+    
+    <div class="relative z-10 text-center px-6 max-w-[1200px] mx-auto mt-10">
+      <h1 class="split-text text-5xl md:text-7xl font-bold leading-none tracking-tight text-white mb-6 font-en uppercase" dir="ltr">
+        Al-Malakiyah <span class="text-gold font-light italic font-ar">3D</span>
+      </h1>
+      <p class="split-text-lines text-lg md:text-xl font-en font-light text-white/70 max-w-3xl mx-auto leading-relaxed" dir="ltr">
+        Deploy your page on all devices. Immerse clients in photorealistic 3D tours that run like a normal website with zero heavy on-device compute.
+      </p>
+    </div>
+  </section>
+
+  <!-- Modular Content Sections -->
+  <main class="max-w-[1600px] mx-auto px-6 md:px-12 py-20 font-en" dir="ltr">
+
+    <!-- Section 1: Complete sales process -->
+    <section class="mb-24 border-b border-white/10 pb-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-5">
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 uppercase tracking-wider">Complete sales process</h2>
+          <p class="text-lg text-white/70 mb-4 leading-relaxed">
+            Al-Malakiyah 3D supports every stage of your real estate sales cycle, from first touchpoint to contract. We transform how developers and agencies engage buyers by accelerating deals.
+          </p>
+          <p class="text-gold text-lg font-light mb-8">
+            - Transform your sales funnel with a platform that keeps buyers engaged and agents organized.<br>
+            - Experience up to a 2x increase in lead conversion rate by letting clients explore their future homes before construction begins.
+          </p>
+          
+          <!-- Contrast Sentence Box -->
+          <div class="bg-charcoal-light border border-gold/30 p-6 rounded-lg mb-8">
+            <p class="text-white/80 leading-relaxed text-sm">
+              Conventional approaches usually are either slow, heavy 3D files that crash standard browsers or flat, static 2D images that fail to capture a buyer's imagination. Royalty 3D is different because we pre-render our 3D environments on the cloud, streaming photorealistic visuals to any device in under one second.
+            </p>
+          </div>
+        </div>
+        <div class="lg:col-span-7 lg:pl-8">
+          <ul class="space-y-6 text-white/80">
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Deploy your page on all devices.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Track buyer behavior and configuration preferences throughout the buying journey automatically.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Generate high-quality leads using interactive tours that work like a normal website without any frustrating loading times.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Shorten the decision-making cycle by allowing buyers to visualize configurations, check pricing, and download custom brochures in real time.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Sync all interaction data directly with your marketing team and sales representatives via our integrated management console.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Web Configurator -->
+    <section class="mb-24 border-b border-white/10 pb-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-5">
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 uppercase tracking-wider">Web Configurator</h2>
+          <p class="text-lg text-white/70 mb-4 leading-relaxed">
+            The Al-Malakiyah 3D Web Configurator puts design power directly in the hands of your prospective buyers. Customers can personalize finishes, layout options, and materials in real time on any browser.
+          </p>
+          <p class="text-gold text-lg font-light mb-8">
+            - Customize spaces instantly and see the changes reflected in high-fidelity photorealistic rendering.<br>
+            - Elevate customer confidence by displaying exact configurations, updated pricing, and availability.
+          </p>
+        </div>
+        <div class="lg:col-span-7 lg:pl-8">
+          <ul class="space-y-6 text-white/80">
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Explore different design combinations including flooring, cabinetry, wall colors, and kitchen countertops with a single click.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Utilize smart filters to narrow down options instantly, allowing users to filter by building, size, price range, rooms, floor level, orientation, terrace, and parking.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Generate a Dynamic PDF for the user showing their exact configuration, complete with updated pricing, saved preferences, a highlighted floorplan, and full project details.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>pre-render high-fidelity configurations on our cloud servers so that users experience zero lag or device crashes during customization.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Integrate options directly with your inventory database to ensure that only available finishes are shown to buyers.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Virtual tours -->
+    <section class="mb-24 border-b border-white/10 pb-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-5">
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 uppercase tracking-wider">Virtual tours</h2>
+          <p class="text-lg text-white/70 mb-4 leading-relaxed">
+            Immerse your clients in their future properties using photorealistic Virtual tours that require zero plugins or downloads. Al-Malakiyah 3D pre-renders environments so that stunning digital twin models run smoothly on even the oldest smartphones.
+          </p>
+          <p class="text-gold text-lg font-light mb-8">
+            - Immerse buyers in interactive environments that load in under 1 second and feel completely natural.<br>
+            - Eliminate technical friction and keep buyers focused on the emotional connection of walking through their future home.
+          </p>
+        </div>
+        <div class="lg:col-span-7 lg:pl-8">
+          <ul class="space-y-6 text-white/80">
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Navigate properties step-by-step using interactive virtual walks that feel like moving through a physical space.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Experience fully immersive 360 views of every room, showing realistic lighting and high-definition texture details.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Works offline as a stand-alone app.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Deploy your page on all devices so that clients can share their virtual walks with friends and family on any browser.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Switch between day and night lighting modes to show the property at different times, highlighting the architecture under various conditions.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Management panel -->
+    <section class="mb-24 border-b border-white/10 pb-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-5">
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 uppercase tracking-wider">Management panel</h2>
+          <p class="text-lg text-white/70 mb-4 leading-relaxed">
+            Manage your entire property inventory, digital assets, and customer interactions from a single, centralized cockpit. Our management panel provides powerful CMS and CRM integrations designed specifically for real estate developers and agencies.
+          </p>
+          <p class="text-gold text-lg font-light mb-8">
+            - Control all listings, prices, and interactive content in real time with zero technical training required.<br>
+            - Drive higher productivity with tools that bridge the gap between marketing assets and sales interactions.
+          </p>
+        </div>
+        
+        <div class="lg:col-span-7 lg:pl-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-semibold text-gold mb-4 border-b border-white/10 pb-2">CMS Features</h3>
+            <ul class="space-y-4 text-white/80 text-sm">
+              <li class="flex items-start gap-3">
+                <span class="text-gold font-bold">-</span>
+                <p>Update property availability, pricing tables, and unit status instantly across all connected websites and kiosk platforms.</p>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-gold font-bold">-</span>
+                <p>Upload and organize 3D models, floorplans, images, and video assets in a centralized media library.</p>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-gold font-bold">-</span>
+                <p>Customize landing pages and layout options using an intuitive drag-and-drop content builder.</p>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-gold font-bold">-</span>
+                <p>Configure smart filters options for property search interfaces, enabling or disabling search fields with a single toggle.</p>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-gold font-bold">-</span>
+                <p>Generate localized language versions of your marketing content and property listings for global buyers.</p>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-semibold text-gold mb-4 border-b border-white/10 pb-2">CRM Features</h3>
+            <ul class="space-y-4 text-white/80 text-sm">
+              <li class="flex items-start gap-3">
+                <span class="text-gold font-bold">-</span>
+                <p>Track visitor preferences, saved configurations, and custom Dynamic PDF downloads to understand buyer intent.</p>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-gold font-bold">-</span>
+                <p>Assign leads automatically to sales agents based on property type, price range, or geographic location.</p>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-gold font-bold">-</span>
+                <p>Send automated, personalized email follow-ups containing the exact configurations and units clients saved during their virtual tours.</p>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-gold font-bold">-</span>
+                <p>Analyze team performance, response times, and conversion rates across different sales channels.</p>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-gold font-bold">-</span>
+                <p>Integrate with external systems like Salesforce, HubSpot, or custom enterprise solutions to sync buyer profiles.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Marketing content -->
+    <section class="mb-24 border-b border-white/10 pb-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-5">
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 uppercase tracking-wider">Marketing content</h2>
+          <p class="text-lg text-white/70 mb-4 leading-relaxed">
+            Generate stunning visual assets for print, social media, and digital campaigns directly from your pre-rendered 3D models. Al-Malakiyah 3D helps marketing teams scale their visual production without paying for expensive photography or repetitive rendering jobs.
+          </p>
+          <p class="text-gold text-lg font-light mb-8">
+            - Transform your marketing library with high-resolution images and promotional videos exported in seconds.<br>
+            - Maintain consistent branding and visual excellence across all marketing touchpoints.
+          </p>
+          
+          <!-- Statistic Paragraph -->
+          <div class="border-l-2 border-gold pl-6 py-2 my-6">
+            <p class="text-white/60 italic text-sm">
+              According to a study by the Global Property Marketing Group, listings that feature interactive 3D tours receive 87% more views on social media platforms compared to traditional listings with static photos. This visual impact translates directly into more qualified leads and faster property sales.
+            </p>
+          </div>
+        </div>
+        <div class="lg:col-span-7 lg:pl-8">
+          <ul class="space-y-6 text-white/80">
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Export high-resolution photorealistic renderings of any unit or configuration for physical banners and print brochures.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Create engaging social media videos showing virtual walks and 360 views that capture user attention on feeds.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Produce personalized digital flyers containing highlighted floorplans, customized finishes, and direct links to interactive models.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Deploy your page on all devices to drive traffic from social channels directly into our high-performance 3D configurator.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Maintain a digital twin library of your entire real estate portfolio, ensuring marketing assets are always accurate and up to date.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Interactive office kiosk -->
+    <section class="mb-24 border-b border-white/10 pb-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-5">
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 uppercase tracking-wider">Interactive office kiosk</h2>
+          <p class="text-lg text-white/70 mb-4 leading-relaxed">
+            Bring your sales office or showroom to life with an Interactive office kiosk that commands attention. Buyers can explore your entire development portfolio on large-format touchscreens and customize their dream home in person.
+          </p>
+          <p class="text-gold text-lg font-light mb-8">
+            - Engage walk-in visitors with interactive touchscreens that make browsing properties an interactive event.<br>
+            - Support your sales team with a powerful visual tool that makes explaining complex development layouts simple.
+          </p>
+        </div>
+        <div class="lg:col-span-7 lg:pl-8 space-y-6">
+          <div class="bg-charcoal-light border border-white/5 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-gold mb-2">Presentation mode</h3>
+            <p class="text-white/80 text-sm leading-relaxed">
+              This mode gives sales agents full control over the display, enabling them to guide buyers through virtual walks, select specific floorplans, compare pricing, and trigger personalized Dynamic PDF brochures that are sent directly to the client's email.
+            </p>
+          </div>
+          
+          <div class="bg-charcoal-light border border-white/5 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-gold mb-2">Autoplay mode</h3>
+            <p class="text-white/80 text-sm leading-relaxed">
+              When the screen is idle, this mode plays a curated loop of beautiful 3D animations, fly-throughs, and project highlights, attracting showroom visitors and inviting them to touch the screen to start their own interactive exploration.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Interactive 3D models -->
+    <section class="mb-24 border-b border-white/10 pb-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-5">
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 uppercase tracking-wider">Interactive 3D models</h2>
+          <p class="text-lg text-white/70 mb-4 leading-relaxed">
+            Replace outdated physical scale models with high-fidelity, interactive 3D models that are always accurate and up to date. Al-Malakiyah 3D projects utilize pre-rendered cloud processing, ensuring fluid performance on any browser without needing expensive computer hardware.
+          </p>
+          <p class="text-gold text-lg font-light mb-8">
+            - Explore complete masterplans, buildings, and individual apartments from any angle with smooth 3D rotations.<br>
+            - Lower your project costs by eliminating the maintenance, shipping, and updates associated with physical models.
+          </p>
+        </div>
+        <div class="lg:col-span-7 lg:pl-8">
+          <ul class="space-y-6 text-white/80">
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Show real-time apartment availability with color-coded overlays indicating sold, reserved, and available units.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Allow users to filter buildings by sunlight exposure, floor level, price, and number of bedrooms using our smart filters.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Deploy your page on all devices so that the interactive masterplan is accessible to buyers on their phones, tablets, or office kiosks.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Maintain a photorealistic digital twin of the entire development, updating prices and availability automatically.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>pre-render the 3D geometry so that users experience under 1s loading times and fluid 60 FPS interactions.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8: Kiosk app -->
+    <section class="mb-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-5">
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 uppercase tracking-wider">Kiosk app</h2>
+          <p class="text-lg text-white/70 mb-4 leading-relaxed">
+            The Al-Malakiyah 3D Kiosk app delivers a premium, standalone showroom experience that remains fast and reliable under any conditions. Engineered for maximum reliability, it handles intensive graphics without relying on active internet connections or local rendering power.
+          </p>
+          <p class="text-gold text-lg font-light mb-8">
+            - Deliver stable showroom presentations that never crash, lag, or buffer in front of premium clients.<br>
+            - Deploy a standalone interactive application that runs continuously on showroom hardware with zero maintenance.
+          </p>
+        </div>
+        <div class="lg:col-span-7 lg:pl-8">
+          <ul class="space-y-6 text-white/80">
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Works offline as a stand-alone app so that network outages never disrupt your showroom sales presentations.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Connect directly with local screens, tablets, and kiosks without requiring complex network setup or server configuration.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Sync automatically with the central Management panel when internet access is available, updating pricing and availability.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>pre-render all 3D visuals to ensure the application starts instantly and operates with no loading time.</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xl font-bold">-</span>
+              <p>Provide a secure, locked-down interface that prevents users from accessing underlying operating system settings or other apps.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Monolithic Cinematic Footer (Dark) -->
+  <footer class="section-dark pt-32 pb-12 px-6 md:px-12 relative z-30 overflow-hidden border-t border-white/10">
+    <div class="max-w-[1800px] mx-auto">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 mb-32">
+        <!-- CTA / Newsletter -->
+        <div class="md:col-span-5" dir="rtl">
+          <h3 class="split-text text-3xl md:text-5xl font-light text-white mb-10 leading-tight">
+            هل أنت مستعد لمناقشة <br/><span class="text-gold font-bold">مستقبلك الاستثماري؟</span>
+          </h3>
+          <form class="flex gap-4 border-b border-white/20 pb-4">
+            <input type="email" placeholder="Enter your email" class="bg-transparent w-full focus:outline-none text-white font-en placeholder-white/30" dir="ltr">
+            <button type="button" class="text-xs font-en uppercase tracking-[0.2em] text-gold hover:text-white transition-colors magnetic-wrap">Connect</button>
+          </form>
+        </div>
+
+        <!-- Links -->
+        <div class="md:col-span-2 md:col-start-8">
+          <p class="text-[10px] font-en tracking-[0.3em] uppercase text-white/30 mb-8">Navigation</p>
+          <ul class="space-y-4 text-sm font-en tracking-widest text-white/70">
+            <li><a href="about.html" class="hover:text-gold transition-colors">About Us</a></li>
+            <li><a href="projects.html" class="hover:text-gold transition-colors">Projects</a></li>
+            <li><a href="properties.html" class="hover:text-gold transition-colors">Properties</a></li>
+            <li><a href="interactive.html" class="hover:text-gold transition-colors">Interactive</a></li>
+            <li><a href="contact.html" class="hover:text-gold transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="md:col-span-3">
+          <p class="text-[10px] font-en tracking-[0.3em] uppercase text-white/30 mb-8">Contact</p>
+          <ul class="space-y-4 text-sm font-en text-white/70">
+            <li><a href="mailto:info@almalakiyah.com" class="hover:text-gold transition-colors">info@almalakiyah.com</a></li>
+            <li><a href="tel:+966501234567" class="hover:text-gold transition-colors">+966 50 123 4567</a></li>
+            <li class="pt-4 text-white/30 text-xs tracking-widest uppercase">Salalah, Oman</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Massive Typography Logo -->
+      <div class="w-full text-center border-t border-white/10 pt-16 relative overflow-hidden">
+        <h1 class="text-[15vw] font-bold leading-none tracking-tighter text-white opacity-[0.03] select-none pointer-events-none uppercase font-en -mb-[4vw]">Almalakiyah</h1>
+      </div>
+
+      <div class="flex flex-col md:flex-row justify-between items-center text-[10px] font-en tracking-[0.2em] text-white/30 uppercase relative z-10">
+        <p>© 2026 Almalakiyah. All Rights Reserved.</p>
+        <div class="flex gap-8 mt-6 md:mt-0">
+          <a href="#" class="hover:text-white transition-colors">Instagram</a>
+          <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
+          <a href="#" class="hover:text-white transition-colors">Twitter</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- External Libraries -->
+  <script src="https://unpkg.com/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/split-type"></script>
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

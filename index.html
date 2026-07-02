@@ -1,300 +1,285 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@200;300;400;500;600;700&family=Inter:wght@200;300;400;500&display=swap" />
-  <title>الملكية للإستثمار | الفخامة الحقيقية</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@200;300;400;500;600;700&family=Inter:wght@200;300;400;500&display=swap" />
+  
+  <title>الملكية للإستثمار | Al-Malakiyah</title>
   <link rel="icon" href="/assets/img/favicon.png" type="image/png" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'cream': '#F6F5F2',
+            'charcoal': '#0B0B0B',
+            'charcoal-light': '#141414',
+            'gold': '#C6A24F',
+            'text-muted': 'rgba(247, 247, 247, 0.6)'
+          },
+          fontFamily: {
+            'ar': ['"IBM Plex Sans Arabic"', 'sans-serif'],
+            'en': ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
+<body class="section-dark">
 
-<body
-  class="bg-charcoal text-text-light font-ar antialiased overflow-x-hidden selection:bg-gold selection:text-charcoal">
+  <!-- Luxury Cursor -->
+  <div class="luxury-cursor"></div>
 
-  <!-- Minimal Glass Header -->
-  <header class="fixed top-6 left-0 right-0 z-50 transition-all duration-300">
-    <div class="max-w-screen-2xl mx-auto px-8 md:px-16">
-      <div
-        class="bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-6 py-4 flex justify-between items-center shadow-lg">
-        <a href="/" class="flex items-center gap-4 group">
-          <img src="/assets/img/logo.png" alt="Logo" class="h-8 w-auto">
-          <span class="text-white text-sm font-bold tracking-[0.1em] uppercase hidden md:block">الملكية للإستثمار</span>
-        </a>
-        <nav class="hidden md:flex items-center gap-12 text-sm font-ar font-medium text-white/80">
-          <a href="#vision" class="hover:text-gold transition-colors">الرؤية</a>
-          <a href="#projects" class="hover:text-gold transition-colors">المشاريع</a>
-          <a href="#services" class="hover:text-gold transition-colors">الخدمات</a>
-          <a href="#contact" class="hover:text-gold transition-colors">اتصل بنا</a>
-        </nav>
-        <div class="flex items-center gap-6">
-          <button class="text-white text-xs font-en tracking-widest hover:text-gold transition-colors">EN</button>
-        </div>
+  <!-- Page Transition Layer -->
+  <div class="page-transition fixed inset-0 bg-[#0B0B0B] z-[100] translate-y-[100%]"></div>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay text-white">
+    <div class="absolute top-8 left-8">
+      <button class="menu-toggle flex flex-col gap-[6px] w-10 h-10 justify-center items-center relative z-50">
+        <span class="w-8 h-[1px] bg-white absolute rotate-45"></span>
+        <span class="w-8 h-[1px] bg-white absolute -rotate-45"></span>
+      </button>
+    </div>
+    <nav class="flex flex-col text-center font-ar font-light space-y-6 text-3xl">
+      <a href="index.html" class="menu-link text-gold">الرئيسية</a>
+      <a href="about.html" class="menu-link hover:text-gold transition-colors">عن الملكية</a>
+      <a href="projects.html" class="menu-link hover:text-gold transition-colors">المشاريع</a>
+      <a href="properties.html" class="menu-link hover:text-gold transition-colors">العقارات</a>
+      <a href="interactive.html" class="menu-link hover:text-gold transition-colors">المنصة التفاعلية</a>
+      <a href="contact.html" class="menu-link hover:text-gold transition-colors">اتصل بنا</a>
+    </nav>
+  </div>
+
+  <!-- Floating Glass Header -->
+  <header class="glass-header fixed top-0 left-0 right-0 z-40 py-6 transition-all duration-300">
+    <div class="max-w-[1800px] mx-auto px-6 md:px-12 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-4 group magnetic-wrap">
+        <!-- Logo can be white initially. When header becomes light, we need a CSS filter to invert it -->
+        <span class="font-en text-sm font-bold tracking-[0.2em] uppercase">Al-Malakiyah</span>
+      </a>
+      
+      <nav class="hidden md:flex items-center gap-12 text-xs font-en tracking-[0.15em] uppercase text-white/80">
+        <a href="about.html" class="hover:text-gold transition-colors">About</a>
+        <a href="projects.html" class="hover:text-gold transition-colors">Projects</a>
+        <a href="properties.html" class="hover:text-gold transition-colors">Properties</a>
+        <a href="interactive.html" class="hover:text-gold transition-colors">Interactive</a>
+        <a href="contact.html" class="hover:text-gold transition-colors">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-8">
+        <button class="hidden md:block text-xs font-en tracking-widest hover:text-gold transition-colors magnetic-wrap">عربي</button>
+        <button class="menu-toggle md:hidden flex flex-col justify-center items-center gap-[6px] w-10 h-10 z-50">
+          <span class="w-8 h-[1px] bg-current"></span>
+          <span class="w-8 h-[1px] bg-current"></span>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- 1. Cinematic Hero Section -->
-  <section class="relative h-screen w-full flex items-end justify-start overflow-hidden pb-32">
-    <!-- Local Video -->
-    <div class="absolute inset-0 z-0 bg-charcoal">
-      <div class="absolute inset-0 bg-black/50 z-10"></div>
-      <!-- Fast approach to slow hover video -->
-      <video muted playsinline preload="auto" class="hero-video-el w-full h-full object-cover">
-        <source src="/assets/vid/vid1.mp4" type="video/mp4">
+  <!-- SCENE 1: Cinematic Dark Hero -->
+  <section class="relative h-screen w-full flex items-center justify-center overflow-hidden section-dark">
+    <!-- Video Background with very slow scale -->
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-[#0B0B0B]/40 z-10"></div> <!-- Dark overlay -->
+      <video autoplay muted loop playsinline class="w-full h-full object-cover scale-110 animate-[slowZoom_20s_ease-in-out_infinite_alternate]">
+        <source src="/assets/vid/vid.mp4" type="video/mp4">
       </video>
     </div>
-
-    <!-- Hero Content -->
-    <div class="relative z-20 px-8 md:px-16 max-w-screen-2xl w-full mx-auto">
-      <div class="overflow-hidden mb-4">
-        <span class="hero-reveal block text-gold text-xs font-en tracking-[0.3em] uppercase opacity-0 translate-y-full">
-          Mastering The Art Of Living
-        </span>
-      </div>
-      <div class="overflow-hidden mb-8 max-w-4xl">
-        <h1 class="hero-reveal text-5xl md:text-8xl font-light leading-[1.1] text-white opacity-0 translate-y-full">
-          صناعة العقار<br />
-          <span class="font-bold">بمفهوم استثنائي.</span>
-        </h1>
-      </div>
-      <div class="flex items-center gap-8 hero-reveal opacity-0 translate-y-full">
-        <a href="#projects"
-          class="group relative inline-flex items-center gap-4 text-sm font-semibold uppercase tracking-widest text-white">
-          <span class="relative z-10">اكتشف المشاريع</span>
-          <div class="w-12 h-[1px] bg-gold group-hover:w-20 transition-all duration-500"></div>
-        </a>
-      </div>
+    
+    <!-- Massive Typography Reveal -->
+    <div class="relative z-10 text-center px-6 mt-16 max-w-[1200px]">
+      <h1 class="split-text text-[12vw] md:text-[8vw] font-bold leading-none tracking-tight text-white mb-6 font-en uppercase" dir="ltr">
+        Legacy of <br/><span class="text-gold font-light italic">Architecture</span>
+      </h1>
+      <p class="split-text-lines text-lg md:text-xl font-ar font-light text-white/70 max-w-2xl mx-auto leading-relaxed">
+        إعادة صياغة الفخامة، وهندسة استثمارات تدوم للأجيال القادمة. نحن لا نبني مجرد مساحات، بل نصنع تجارب مكانية تتنفس الرقي.
+      </p>
     </div>
 
     <!-- Scroll Indicator -->
-    <div class="absolute bottom-12 right-16 z-20 hidden md:flex flex-col items-center gap-4 opacity-50">
-      <span class="text-[10px] font-en uppercase tracking-widest rotate-90 mb-6">Scroll</span>
-      <div class="w-[1px] h-16 bg-gradient-to-b from-gold to-transparent"></div>
+    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-4 opacity-50">
+      <span class="text-[9px] font-en tracking-[0.3em] uppercase">Scroll</span>
+      <div class="w-[1px] h-12 bg-white/30 relative overflow-hidden">
+        <div class="w-full h-full bg-white absolute top-0 left-0 animate-[scrollLine_2s_ease-in-out_infinite]"></div>
+      </div>
     </div>
   </section>
 
-  <!-- 2. Company Vision (Editorial Layout) -->
-  <section id="vision" class="py-section px-8 md:px-16 bg-charcoal relative z-10">
-    <div class="max-w-screen-2xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
-      <div class="lg:w-5/12 text-mask">
-        <h2 class="mask-reveal-el text-4xl md:text-6xl font-light leading-tight mb-8 reveal-text">
-          رؤيتنا تتجاوز <span class="text-gold font-bold">المألوف.</span> نحن لا نبني جدراناً، بل نبتكر أسلوب حياة
-          استثنائي.
-        </h2>
-        <p class="mask-reveal-el text-text-muted text-lg font-light leading-relaxed mb-12 max-w-md reveal-text">
-          في الملكية للإستثمار، ندمج بين الفن المعماري والتطبيق العملي لتقديم صروح تتحدى الزمن وتوفر أسلوب حياة يفوق
-          التوقعات.
+  <!-- SCENE 2: The Philosophy (Light Transition & Pinning) -->
+  <!-- Note: We use section-light here -->
+  <section class="section-light py-40 px-6 md:px-12 relative z-20">
+    <div class="max-w-[1600px] mx-auto flex flex-col md:flex-row gap-20 items-center">
+      <div class="w-full md:w-5/12">
+        <div class="text-mask mb-12">
+          <h2 class="split-text text-5xl md:text-7xl font-light font-ar leading-tight text-charcoal">
+            فلسفة <br/><span class="font-bold">المساحات.</span>
+          </h2>
+        </div>
+        <p class="split-text-lines text-xl font-light leading-relaxed text-charcoal/70 mb-10">
+          في الملكية، نؤمن أن الصمت المعماري أبلغ من الضجيج. مشاريعنا تستمد هويتها من التبسيط الاستثنائي والمواد الطبيعية النادرة، لتعكس شخصية المستثمر النخبوي.
         </p>
-        <div class="text-mask">
-          <a href="#about"
-            class="mask-reveal-el reveal-text inline-flex items-center gap-4 text-xs font-en uppercase tracking-widest text-gold hover:text-white transition-colors">
-            Read Our Story
-            <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
+        <div class="magnetic-wrap">
+          <a href="about.html" class="inline-flex items-center gap-4 text-xs font-en uppercase tracking-[0.2em] text-charcoal border-b border-charcoal/20 pb-2 hover:border-gold hover:text-gold transition-colors">
+            Our Story
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </a>
         </div>
       </div>
-
-      <div class="lg:w-7/12 w-full">
-        <div class="image-wrapper h-[70vh] w-full">
-          <img
-            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-            alt="Vision Architecture" class="parallax-image">
-        </div>
+      
+      <!-- Parallax Image with Clip-path Reveal -->
+      <div class="w-full md:w-7/12 relative h-[70vh] img-parallax-wrap clip-path-reveal" data-scroll-reveal>
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Luxury Interior">
       </div>
     </div>
   </section>
 
-  <!-- 3. Featured Projects (Magazine Grid) -->
-  <section id="projects" class="py-section px-8 md:px-16 bg-[#111111] relative z-10">
-    <div class="max-w-screen-2xl mx-auto">
-      <div class="flex justify-between items-end mb-20">
-        <div class="text-mask">
-          <h2 class="mask-reveal-el text-3xl md:text-5xl font-light reveal-text">مشاريع <span
-              class="font-bold text-gold">أيقونية</span></h2>
-        </div>
-        <a href="#"
-          class="hidden md:block text-xs font-en uppercase tracking-widest text-text-muted hover:text-gold transition-colors">View
-          All Directory</a>
-      </div>
+  <!-- SCENE 3: Featured Architecture (Dark & Layered) -->
+  <section class="section-dark py-40 relative z-20 overflow-hidden">
+    <div class="px-6 md:px-12 max-w-[1800px] mx-auto mb-20 flex justify-between items-end">
+      <h2 class="split-text text-5xl md:text-7xl font-light font-ar text-white">إبداعات <br/><span class="text-gold font-bold">استثنائية</span></h2>
+      <a href="projects.html" class="text-xs font-en uppercase tracking-[0.2em] text-white/50 hover:text-white transition-colors pb-2 border-b border-white/20">View Portfolio</a>
+    </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8">
-        <!-- Project 1 (Large) -->
-        <div class="md:col-span-8 group">
-          <div class="image-wrapper h-[60vh] mb-6">
-            <img
-              src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80"
-              alt="Project 1" class="parallax-image transition-transform duration-[1.5s] group-hover:scale-105">
+    <!-- Asymmetrical Grid representing Horizontal Flow/Depth -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 px-6 md:px-12 max-w-[1800px] mx-auto">
+      
+      <!-- Project 1 (Large) -->
+      <a href="projects.html" class="md:col-span-8 group block project-card">
+        <div class="img-parallax-wrap h-[60vh] md:h-[80vh] w-full mb-8 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Project 1" class="transition-transform duration-[2s] group-hover:scale-105 group-hover:brightness-75">
+        </div>
+        <div class="flex justify-between items-start border-t border-white/10 pt-6">
+          <div>
+            <h3 class="text-3xl font-bold font-ar text-white mb-2">برج الملكية ريزيدنس</h3>
+            <p class="text-white/50 font-en text-sm tracking-widest uppercase">Salalah, Oman</p>
           </div>
-          <div class="flex justify-between items-start">
-            <div>
-              <h3 class="text-2xl font-bold mb-2">برج الملكية ريزيدنس</h3>
-              <p class="text-text-muted text-sm">صلالة، عمان</p>
-            </div>
-            <span
-              class="text-gold text-xs font-en tracking-widest border border-gold/30 px-3 py-1 rounded-full">2027</span>
+          <span class="text-gold font-en text-xs tracking-widest">2027</span>
+        </div>
+      </a>
+
+      <!-- Project 2 (Offset) -->
+      <a href="projects.html" class="md:col-span-4 block mt-0 md:mt-40 group project-card">
+        <div class="img-parallax-wrap h-[50vh] md:h-[60vh] w-full mb-8 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1613490908592-fd5e48f43fb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Project 2" class="transition-transform duration-[2s] group-hover:scale-105 group-hover:brightness-75">
+        </div>
+        <div class="flex justify-between items-start border-t border-white/10 pt-6">
+          <div>
+            <h3 class="text-xl font-bold font-ar text-white mb-2">فلل النسيم</h3>
+            <p class="text-white/50 font-en text-sm tracking-widest uppercase">Dubai, UAE</p>
           </div>
+          <span class="text-white/30 font-en text-xs tracking-widest">2025</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- SCENE 4: The Numbers & Lifestyle (Light) -->
+  <section class="section-light py-40 px-6 md:px-12 relative z-20">
+    <div class="max-w-[1600px] mx-auto border-t border-charcoal/10 pt-20">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
+        
+        <div class="text-center md:text-right">
+          <h3 class="split-text font-en text-7xl md:text-9xl font-light text-charcoal mb-4">15<span class="text-gold">+</span></h3>
+          <p class="font-en text-xs tracking-[0.2em] text-charcoal/50 uppercase">Years of Excellence</p>
+        </div>
+        
+        <div class="text-center md:text-right">
+          <h3 class="split-text font-en text-7xl md:text-9xl font-light text-charcoal mb-4">42</h3>
+          <p class="font-en text-xs tracking-[0.2em] text-charcoal/50 uppercase">Exclusive Projects</p>
+        </div>
+        
+        <div class="text-center md:text-right">
+          <h3 class="split-text font-en text-7xl md:text-9xl font-light text-charcoal mb-4">$2<span class="text-gold text-5xl relative -top-6">B</span></h3>
+          <p class="font-en text-xs tracking-[0.2em] text-charcoal/50 uppercase">Asset Value Managed</p>
         </div>
 
-        <!-- Project 2 (Small offset) -->
-        <div class="md:col-span-4 md:mt-40 group">
-          <div class="image-wrapper h-[45vh] mb-6">
-            <img
-              src="https://images.unsplash.com/photo-1613490908592-fd5e48f43fb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-              alt="Project 2" class="parallax-image transition-transform duration-[1.5s] group-hover:scale-105">
-          </div>
-          <div class="flex justify-between items-start">
-            <div>
-              <h3 class="text-xl font-bold mb-2">فلل النسيم الفاخرة</h3>
-              <p class="text-text-muted text-sm">دبي، الإمارات</p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. Services (Minimal Accordion Style) -->
-  <section id="services" class="py-section px-8 md:px-16 bg-charcoal relative z-10">
-    <div class="max-w-screen-xl mx-auto services-container">
-      <div class="text-mask mb-16 text-center">
-        <h2 class="mask-reveal-el text-3xl md:text-4xl font-light reveal-text text-gold tracking-widest">SERVICES</h2>
-      </div>
-
-      <div class="border-t border-border-dim">
-        <!-- Service 1 -->
-        <div
-          class="service-item border-b border-border-dim py-10 flex flex-col md:flex-row justify-between md:items-center group cursor-pointer hover:bg-white/5 transition-colors px-6 -mx-6">
-          <h3
-            class="text-3xl md:text-5xl font-light text-white/50 group-hover:text-white transition-colors duration-500 mb-4 md:mb-0">
-            التطوير العقاري</h3>
-          <p class="text-text-muted max-w-md font-light">تصميم وإنشاء مجتمعات متكاملة ومبانٍ فاخرة تضع معايير جديدة
-            للعيش الاستثنائي.</p>
+  <!-- SCENE 5: Monolithic Cinematic Footer (Dark) -->
+  <footer class="section-dark pt-32 pb-12 px-6 md:px-12 relative z-30 overflow-hidden">
+    <div class="max-w-[1800px] mx-auto">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 mb-32">
+        <!-- CTA / Newsletter -->
+        <div class="md:col-span-5">
+          <h3 class="split-text text-3xl md:text-5xl font-light text-white mb-10 leading-tight">
+            هل أنت مستعد لمناقشة <br/><span class="text-gold font-bold">مستقبلك الاستثماري؟</span>
+          </h3>
+          <form class="flex gap-4 border-b border-white/20 pb-4">
+            <input type="email" placeholder="Enter your email" class="bg-transparent w-full focus:outline-none text-white font-en placeholder-white/30" dir="ltr">
+            <button type="button" class="text-xs font-en uppercase tracking-[0.2em] text-gold hover:text-white transition-colors magnetic-wrap">Connect</button>
+          </form>
         </div>
-        <!-- Service 2 -->
-        <div
-          class="service-item border-b border-border-dim py-10 flex flex-col md:flex-row justify-between md:items-center group cursor-pointer hover:bg-white/5 transition-colors px-6 -mx-6">
-          <h3
-            class="text-3xl md:text-5xl font-light text-white/50 group-hover:text-white transition-colors duration-500 mb-4 md:mb-0">
-            الاستثمارات</h3>
-          <p class="text-text-muted max-w-md font-light">إدارة المحافظ العقارية وتقديم استشارات استراتيجية تضمن نمواً
-            مستداماً وعوائد عالية.</p>
+
+        <!-- Links -->
+        <div class="md:col-span-2 md:col-start-8">
+          <p class="text-[10px] font-en tracking-[0.3em] uppercase text-white/30 mb-8">Navigation</p>
+          <ul class="space-y-4 text-sm font-en tracking-widest text-white/70">
+            <li><a href="about.html" class="hover:text-gold transition-colors">About Us</a></li>
+            <li><a href="projects.html" class="hover:text-gold transition-colors">Projects</a></li>
+            <li><a href="properties.html" class="hover:text-gold transition-colors">Properties</a></li>
+            <li><a href="interactive.html" class="hover:text-gold transition-colors">Interactive</a></li>
+            <li><a href="contact.html" class="hover:text-gold transition-colors">Contact</a></li>
+          </ul>
         </div>
-        <!-- Service 3 -->
-        <div
-          class="service-item border-b border-border-dim py-10 flex flex-col md:flex-row justify-between md:items-center group cursor-pointer hover:bg-white/5 transition-colors px-6 -mx-6">
-          <h3
-            class="text-3xl md:text-5xl font-light text-white/50 group-hover:text-white transition-colors duration-500 mb-4 md:mb-0">
-            الوساطة العقارية</h3>
-          <p class="text-text-muted max-w-md font-light">تمثيل نخبة العملاء في عمليات البيع والشراء بخصوصية تامة
-            واحترافية متناهية.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- 5. Lifestyle Break (Parallax Quote) -->
-  <section class="relative h-[80vh] w-full flex items-center justify-center overflow-hidden">
-    <div class="absolute inset-0 z-0">
-      <div class="absolute inset-0 bg-charcoal/60 z-10"></div>
-      <img
-        src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
-        alt="Lifestyle" class="parallax-image">
-    </div>
-    <div class="relative z-20 text-center px-8 text-mask">
-      <h2 class="mask-reveal-el reveal-text text-3xl md:text-6xl font-light leading-snug text-white max-w-4xl mx-auto">
-        "كل مشروع هو تحفة فنية ترتقي بالتطوير العمراني،<br /> <span class="text-gold font-bold">وتضع معايير جديدة
-          للفخامة والابتكار."</span>
-      </h2>
-    </div>
-  </section>
-
-  <!-- 6. Statistics (Minimal Numbers) -->
-  <section class="py-section px-8 md:px-16 bg-charcoal relative z-10 border-b border-border-dim">
-    <div
-      class="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 divide-y md:divide-y-0 md:divide-x md:divide-x-reverse divide-border-dim text-center">
-      <div class="pt-8 md:pt-0">
-        <div class="text-6xl md:text-8xl font-light font-en text-white mb-4"><span class="stat-number"
-            data-target="15">0</span><span class="text-gold">+</span></div>
-        <div class="text-text-muted text-sm tracking-widest uppercase">سنوات من الخبرة</div>
-      </div>
-      <div class="pt-8 md:pt-0">
-        <div class="text-6xl md:text-8xl font-light font-en text-white mb-4"><span class="stat-number"
-            data-target="500">0</span><span class="text-gold">+</span></div>
-        <div class="text-text-muted text-sm tracking-widest uppercase">عميل سعيد</div>
-      </div>
-      <div class="pt-8 md:pt-0">
-        <div class="text-6xl md:text-8xl font-light font-en text-white mb-4"><span class="stat-number"
-            data-target="2.5">0</span><span class="text-gold">B</span></div>
-        <div class="text-text-muted text-sm tracking-widest uppercase font-en">Value Created (USD)</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 8. Contact (Minimal Form) -->
-  <section id="contact" class="py-section px-8 md:px-16 bg-charcoal relative z-10 border-t border-border-dim">
-    <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row gap-20">
-      <div class="md:w-1/2">
-        <h2 class="text-4xl md:text-6xl font-light mb-8">شراكة استراتيجية <br /><span
-            class="text-gold font-bold">لمستقبل استثماري واعد.</span></h2>
-        <p class="text-text-muted mb-12 max-w-sm">تواصل مع مستشارينا الماليين والعقاريين لحجز استشارتك الخاصة أو
-          للاستفسار عن فرصنا الاستثمارية الحصرية.</p>
-
-        <div class="space-y-6 text-sm font-en tracking-widest text-white/80">
-          <p class="hover:text-gold transition-colors cursor-pointer">INFO@ALMALAKIYAH.COM</p>
-          <p class="hover:text-gold transition-colors cursor-pointer">+966 50 123 4567</p>
-          <p class="text-text-muted">SALALAH, OMAN</p>
+        <!-- Contact -->
+        <div class="md:col-span-3">
+          <p class="text-[10px] font-en tracking-[0.3em] uppercase text-white/30 mb-8">Contact</p>
+          <ul class="space-y-4 text-sm font-en text-white/70">
+            <li><a href="mailto:info@almalakiyah.com" class="hover:text-gold transition-colors">info@almalakiyah.com</a></li>
+            <li><a href="tel:+966501234567" class="hover:text-gold transition-colors">+966 50 123 4567</a></li>
+            <li class="pt-4 text-white/30 text-xs tracking-widest uppercase">Salalah, Oman</li>
+          </ul>
         </div>
       </div>
 
-      <div class="md:w-1/2">
-        <form class="flex flex-col gap-10">
-          <div class="relative">
-            <input type="text"
-              class="w-full bg-transparent border-b border-border-dim py-4 text-white placeholder-text-muted focus:outline-none focus:border-gold transition-colors text-lg"
-              placeholder="الاسم الكامل">
-          </div>
-          <div class="relative">
-            <input type="email"
-              class="w-full bg-transparent border-b border-border-dim py-4 text-white placeholder-text-muted focus:outline-none focus:border-gold transition-colors text-lg font-en text-right"
-              placeholder="Email Address" dir="ltr">
-          </div>
-          <div class="relative">
-            <textarea rows="1"
-              class="w-full bg-transparent border-b border-border-dim py-4 text-white placeholder-text-muted focus:outline-none focus:border-gold transition-colors text-lg resize-none"
-              placeholder="الرسالة"></textarea>
-          </div>
-          <div class="pt-4">
-            <button type="button"
-              class="group relative inline-flex items-center gap-4 text-sm font-en uppercase tracking-widest text-white">
-              <span class="relative z-10 group-hover:text-gold transition-colors">Submit Request</span>
-              <div class="w-12 h-[1px] bg-white group-hover:bg-gold group-hover:w-20 transition-all duration-500"></div>
-            </button>
-          </div>
-        </form>
+      <!-- Massive Typography Logo -->
+      <div class="w-full text-center border-t border-white/10 pt-16 relative overflow-hidden">
+        <h1 class="text-[15vw] font-bold leading-none tracking-tighter text-white opacity-[0.03] select-none pointer-events-none uppercase font-en -mb-[4vw]">Almalakiyah</h1>
       </div>
-    </div>
-  </section>
 
-  <!-- Minimal Footer -->
-  <footer class="bg-charcoal px-8 md:px-16 py-8 border-t border-border-dim">
-    <div
-      class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center text-xs font-en tracking-widest text-text-muted uppercase">
-      <p>© 2026 Almalakiyah. All Rights Reserved.</p>
-      <div class="flex gap-8 mt-4 md:mt-0">
-        <a href="#" class="hover:text-gold transition-colors">Privacy</a>
-        <a href="#" class="hover:text-gold transition-colors">Terms</a>
+      <div class="flex flex-col md:flex-row justify-between items-center text-[10px] font-en tracking-[0.2em] text-white/30 uppercase relative z-10">
+        <p>© 2026 Almalakiyah. All Rights Reserved.</p>
+        <div class="flex gap-8 mt-6 md:mt-0">
+          <a href="#" class="hover:text-white transition-colors">Instagram</a>
+          <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
+          <a href="#" class="hover:text-white transition-colors">Twitter</a>
+        </div>
       </div>
+
     </div>
   </footer>
 
-  <script type="module" src="/assets/js/main.js"></script>
-</body>
+  <style>
+    /* CSS for initial keyframes not handled by Tailwind */
+    @keyframes slowZoom {
+      0% { transform: scale(1.1); }
+      100% { transform: scale(1.15); }
+    }
+    @keyframes scrollLine {
+      0% { top: -100%; }
+      100% { top: 100%; }
+    }
+  </style>
 
+  <!-- External Libraries -->
+  <script src="https://unpkg.com/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/split-type"></script>
+  <script src="/assets/js/main.js"></script>
+</body>
 </html>
